@@ -1,0 +1,248 @@
+:root {
+  --primary-color: #fbba3f;
+  --complete-color: #83c760;
+  --dark-bg: #1e1e2f;
+  --form-bg: #29293d;
+  --input-bg: #3a3a4d;
+  --white: #ffffff;
+  --light-gray: #ccc;
+  --lighter-gray: #cedbe9;
+  --error-red: #ff6b6b;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Container for the entire query form and chart */
+.query-container {
+  width: 100vw;     
+  height: 100vh;    
+  padding: 20px;   
+  background-color: var(--form-bg); 
+  box-sizing: border-box;
+  overflow-y: auto; 
+}
+/* PopupMessage.css */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-container {
+  background-color: var(--dark-bg);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 300px;
+}
+
+.popup-message {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: var(--complete-color);
+}
+
+.popup-close-btn {
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: var(--dark-bg);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bolder;
+}
+
+.popup-close-btn:hover {
+  background-color: var(--dark-bg);
+  color: var(--primary-color);
+  box-shadow: 0px 0px 0px 1px var(--primary-color);
+ }
+
+/* Title styling */
+.query-title {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Subtitle styling */
+.query-subtitle {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+/* Flex layout for form and chart */
+.query-form-chart {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* FORM STYLING */
+.query-form {
+  background-color: var(--input-bg);
+  padding: 50px;
+  padding-right: 64px ;
+  border-radius: 12px;
+  flex: 1 1 400px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for form */
+.query-form:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  margin-bottom: 15px;
+  margin-right: 10px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--form-bg);
+  color: var(--white);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+/* Input fields focus effect */
+.form-input:focus,
+.form-textarea:focus {
+  background-color: var(--input-bg);
+  outline: 2px solid var(--primary-color);
+}
+
+.form-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-button {
+  width: 30%;
+  padding: 10px;
+  margin-left: 150px;
+  background-color: var(--primary-color);
+  color: var(--dark-bg);
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+/* Button hover effect */
+.form-button:hover {
+  background-color: var(--hover-color, #ffd873);
+  transform: scale(1.05);
+}
+
+/* Status message */
+.status-message {
+  margin-top: 10px;
+  color: var(--light-gray);
+  font-style: italic;
+}
+
+/* CHART */
+.chart-container {
+  flex: 1 1 400px;
+  padding: 20px;
+  background-color: var(--input-bg);
+  border-radius: 12px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for chart */
+.chart-container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+/* TABLE STYLING */
+.table-wrapper {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.query-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--input-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 8px var(--shadow-color);
+}
+
+/* Table cell and header styling */
+.query-table th,
+.query-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--dark-bg);
+}
+
+/* Table header styling */
+.query-table th {
+  background-color: var(--form-bg);
+  color: var(--lighter-gray);
+}
+
+/* Hover effect on table rows */
+.query-table tr:hover {
+  background-color: #34344d;
+  transition: background 0.3s ease;
+}
+
+.selected {
+  background-color: rgba(251, 186, 63, 0.2);
+}
+
+/* Status color styles */
+.status-pending {
+  color: #FF6347;
+  font-weight: bold;
+}
+
+.status-complete {
+  color: var(--complete-color);
+  font-weight: bold;
+}
+
+.reply-pending {
+  font-style: italic;
+  color: var(--primary-color);
+}
+
+.reply-complete {
+  font-style: italic;
+  color: var(--complete-color);
+}
+
+/* Checkbox alignment */
+.query-table input[type="checkbox"] {
+  transform: scale(1.1);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 900px) {
+  .query-form-chart {
+    flex-direction: column;
+  }
+}

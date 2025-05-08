@@ -1,0 +1,119 @@
+.about-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--dark-bg);
+    color: var(--white);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+/* Outer container only controls width, background, and layout */
+
+.about-wrapper .about-page {
+    background-color: var(--panel-dark);
+    margin: 2rem auto;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    width: 100%;
+    animation: slideIn 0.8s ease-out;
+    transform: scale(1);
+}
+
+
+/* Inner content for padding, font, spacing */
+
+.about-wrapper .about-content {
+    padding: 3rem 2rem;
+    margin-left: 15rem;
+}
+
+
+/* Typography */
+
+.about-wrapper h1,
+.about-wrapper h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    margin-left: 14rem;
+}
+
+.about-wrapper h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.about-wrapper a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.about-wrapper a:hover {
+    color: var(--hover-color);
+    text-decoration: underline;
+}
+
+
+/* Text content */
+
+.about-wrapper .about-intro p {
+    font-size: 1.24rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+    font-weight: 450;
+}
+
+
+/* Sections */
+
+.about-wrapper .founders-section {
+    margin-top: 3rem;
+}
+
+.about-wrapper .founder-cards {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.about-wrapper .founder-card {
+    background-color: var(--panel-dark);
+    padding: 3rem;
+    border-radius: 10px;
+    width: 70%;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    text-align: center;
+}
+
+.about-wrapper .founder-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+}
+
+.about-wrapper .contact-section {
+    margin-top: 3rem;
+    margin-left: 6rem;
+}
+
+.about-wrapper .contact-section p {
+    margin-left: 5.5rem;
+    font-weight: 450;
+    line-height: 1.5;
+    font-size: 1.24rem;
+}
+
+.about-wrapper .contact-section ul {
+    list-style: none;
+    padding: 0.5rem;
+    margin-left: 12rem;
+}
+
+.about-wrapper .contact-section li {
+    margin: 0.5rem;
+    font-size: 1.24rem;
+    line-height: 1.5;
+    font-weight: 450;
+}

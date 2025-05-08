@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
+  background: linear-gradient(135deg, #0d0d0d, #1f1f2e);
+  color: #fff;
+}
+
+.repairs-container {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.repairs-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.repairs-header h1 {
+  font-size: 3rem;
+  background: linear-gradient(to right, #ffcc00, #ff9100);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+.repairs-header p {
+  font-size: 1rem;
+  color: #aaa;
+  margin-top: 1rem;
+}
+
+.repair-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.repair-item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.8rem;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  transition: 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 330px;
+}
+
+.repair-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(255, 204, 0, 0.2);
+}
+
+.repair-item h3 {
+  color: #ffcc00;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.repair-item p {
+  color: #ccc;
+  font-size: 0.95rem;
+  margin: 0.4rem 0;
+}
+
+.status {
+  margin-top: 0.8rem;
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+  border-radius: 30px;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.status.pending {
+  background-color: #ff4747;
+  color: #fff;
+}
+
+.status.completed {
+  background-color: #00d26a;
+  color: #fff;
+}
+
+.status.in\ progress {
+  background-color: #ffc400;
+  color: #000;
+}
+
+.request-button {
+  margin-top: 1.5rem;
+  width: 100%;
+  background: linear-gradient(to right, #00b16a, #009f5c);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 12px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 12px rgba(0, 210, 106, 0.4);
+  text-align: center;
+}
+
+.request-button:hover {
+  background: linear-gradient(to right, #009f5c, #007a4a);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 0 20px rgba(0, 210, 106, 0.6);
+}
+
+.repairs-footer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 5rem;
+  padding-top: 2rem;
+  border-top: 1px solid #333;
+}

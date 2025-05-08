@@ -1,0 +1,369 @@
+/* ==========================
+   Root variables and reset
+============================= */
+
+:root {
+  --primary-color: #fbba3f;
+  --hover-color: #ffd873;
+  --dark-bg: #1e1e2f;
+  --panel-dark: #2d2d3d;
+  --form-bg: #29293d;
+  --input-bg: #3a3a4d;
+  --white: #ffffff;
+  --light-gray: #ccc;
+  --lighter-gray: #cedbe9;
+  --error-red: #ff6b6b;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --max-width: 100%;
+}
+
+/* Base setup */
+
+.login-page-body,
+.login-page-html {
+  font-family: "Segoe UI", sans-serif;
+  background-color: var(--dark-bg);
+  color: var(--white);
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+/* Login Container */
+
+.login-page-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Left Panel */
+
+.login-page-left-panel-container {
+  flex: 1;
+  height: 200%;
+  background-color: var(--panel-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-page-left-panel {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: slideInLeft 1s ease-out;
+}
+
+.login-page-robot-container {
+  text-align: center;
+  color: var(--white);
+}
+
+.login-page-robot-img {
+  width: 200%;
+  height: auto;
+  object-fit: cover;
+  margin-left: 0.1rem;
+  max-width: 100%;
+}
+
+.login-page-knee-caption {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  text-align: center;
+  font-weight: bold;
+  line-height: 1.3;
+  font-family: "Segoe UI", sans-serif;
+  position: absolute;
+  bottom: 35%;
+  left: 15%;
+  padding: 1rem 1.5rem;
+  background: rgba(29, 29, 45, 0.6);
+  border-radius: 12px;
+  text-shadow: 0 2px 6px var(--shadow-color);
+  backdrop-filter: blur(2px);
+  z-index: 10;
+  font-weight: 600;
+  box-shadow: 2px 2px 3px 2px rgba(255, 255, 255, 0.11);
+  max-width: 420rem;
+  text-align: left;
+}
+
+/* Right Panel */
+
+.login-page-right-panel-container {
+  flex: 1;
+  background-color: #1a1a26;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.login-page-right-panel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: slideInRight 1s ease-out;
+}
+
+.login-page-signup-form-box {
+  width: 100%;
+  max-width: 500px;
+  background-color: var(--form-bg);
+  padding: 3rem 1.5rem;
+  border-radius: 20px;
+  box-shadow: 0 0 20px var(--shadow-color);
+  text-align: center;
+  height: 80vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.login-page-signup-form-box h2 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  margin-top: 20px;
+}
+
+.login-page-login-text {
+  text-align: center;
+  margin-bottom: 5rem;
+  font-size: 0.95rem;
+  color: var(--white);
+}
+
+.login-page-login-text a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Input Fields */
+
+.login-page-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-page-form input {
+  width: 100%;
+  padding: 0.5rem 2rem;
+  margin-bottom: 3rem;
+  padding-right: 0px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--input-bg);
+  color: var(--white);
+  font-size: 0.95rem;
+  height: 45px;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.login-page-form input::placeholder {
+  color: var(--light-gray);
+}
+
+/* Input Icon */
+
+.login-page-input-wrapper {
+  position: relative;
+}
+
+.login-page-input-icon {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  position: absolute;
+  left: 16px;
+  top: 15%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Button */
+
+.login-page-signup-btn {
+  width: 60%;
+  padding: 0.8rem;
+  padding-right: 20px;
+  background-color: var(--primary-color);
+  color: #1a1a26;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.login-page-signup-btn:hover {
+  background-color: var(--hover-color);
+}
+
+/* Feedback messages */
+
+.login-page-error {
+  color: var(--error-red);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.login-page-success-message {
+  color: #4caf50;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Classic Login Options */
+
+.login-page-classic-login {
+  margin-top: 0.25rem;
+  text-align: center;
+  color: #fbba3f;
+}
+.login-page-input {
+  width: 250px;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: white;
+  color: #333;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  margin-top: -20px;
+  margin-bottom: 40px;
+
+}
+.login-page-input::placeholder {
+  color: #aaa; /* Light gray placeholder text */
+}
+.login-page-icon-row {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-top: 0.8rem;
+}
+
+.login-page-login-icon {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.login-page-login-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Glow Border */
+
+.login-page-glow-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 3px;
+  background: var(--primary-color);
+  box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+  animation: snakeBorder 6s ease-in-out infinite;
+  z-index: 10;
+  border-radius: 20px;
+}
+
+/* Animations */
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes snakeBorder {
+  0% {
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+  }
+  25% {
+    width: 100%;
+    height: 3px;
+    top: 0;
+    left: 0;
+  }
+  26% {
+    top: 0;
+    left: 100%;
+    width: 3px;
+    height: 0%;
+  }
+  50% {
+    height: 100%;
+    width: 3px;
+    top: 0;
+    left: 100%;
+  }
+  51% {
+    top: 100%;
+    left: 100%;
+    width: 0%;
+    height: 3px;
+  }
+  75% {
+    width: 100%;
+    height: 3px;
+    top: 100%;
+    left: 0;
+  }
+  76% {
+    top: 100%;
+    left: 0;
+    width: 3px;
+    height: 0%;
+  }
+  100% {
+    width: 0%;
+    height: 3px;
+    top: 0;
+    left: 0;
+  }
+}

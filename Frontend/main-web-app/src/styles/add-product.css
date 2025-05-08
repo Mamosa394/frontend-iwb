@@ -1,0 +1,202 @@
+:root {
+  --primary-color: #fbba3f;
+  --hover-color: #ffd873;
+  --dark-bg: #1e1e2f;
+  --panel-dark: #2d2d3d;
+  --form-bg: #29293d;
+  --input-bg: #3a3a4d;
+  --white: #ffffff;
+  --light-gray: #ccc;
+  --lighter-gray: #cedbe9;
+  --error-red: #ff6b6b;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --max-width: 100%;
+}
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(30, 30, 47, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.blurred {
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.add-product-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.error-message,
+.success-message {
+  background-color: var(--panel-dark);
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.error-message {
+  color: var(--error-red);
+}
+
+.success-message {
+  color: #52c41a;
+}
+
+.content {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Upload Section */
+.upload-section {
+  background-color: var(--panel-dark);
+  flex: 1;
+  width: 0px;
+  height: 450px;
+  border: 2px dashed var(--input-bg);
+  border-radius: 12px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: border-color 0.3s;
+}
+
+.upload-section:hover {
+  border-color: var(--primary-color);
+}
+
+.upload-placeholder {
+  text-align: center;
+  color: var(--lighter-gray);
+  font-size: 0.9rem;
+}
+
+.upload-placeholder span {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--light-gray);
+  font-size: 0.8rem;
+}
+
+/* Updated file-input for smaller clickable area */
+.file-input {
+  position: absolute;
+  width: 120px; /* Reduced clickable width */
+  height: 120px; /* Reduced clickable height */
+  opacity: 0;
+  cursor: pointer;
+  top: 50%;
+  left: 50%;
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Center the input within the upload section */
+}
+
+.image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Form Section */
+.form-section {
+  flex: 2;
+  background-color: var(--form-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  margin-bottom: 0.4rem;
+  color: var(--lighter-gray);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-bg);
+  padding: 10px 12px;
+  border-radius: 6px;
+  color: var(--white);
+  font-size: 0.85rem;
+  outline: none;
+  height: 42px; /* Same height */
+  line-height: 1.2;
+  box-sizing: border-box;
+  appearance: none; /* Important for select */
+  vertical-align: middle;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--primary-color);
+}
+.form-group select {
+  padding-right: 32px; /* Leave room for dropdown arrow */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23fff' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px 8px;
+}
+.form-group textarea {
+  min-height: 100px; /* Only textarea taller */
+  height: auto;
+  resize: vertical;
+}
+
+/* Publish Button */
+.publish-button {
+  margin-top: 2rem;
+  background-color: var(--primary-color);
+  color: var(--dark-bg);
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.publish-button:hover {
+  background-color: var(--hover-color);
+  transform: translateY(-2px);
+}

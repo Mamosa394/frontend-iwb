@@ -1,0 +1,249 @@
+:root {
+  --primary-color: #fbba3f;
+  --hover-color: #ffd873;
+  --dark-bg: #1e1e2f;
+  --panel-dark: #2d2d3d;
+  --form-bg: #29293d;
+  --input-bg: #3a3a4d;
+  --white: #ffffff;
+  --light-gray: #ccc;
+  --lighter-gray: #cedbe9;
+  --error-red: #ff6b6b;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --max-width: 100%;
+}
+
+/* GENERAL LAYOUT */
+.admin-dashboard {
+  display: flex;
+  height: 100vh;
+  background-color: var(--dark-bg);
+  color: var(--white);
+  overflow: hidden;
+  margin-left: 250px;
+}
+
+/* SIDEBAR */
+.admin-sidebar {
+  width: 250px;
+  background-color: var(--panel-dark);
+  transition: width 0.3s ease;
+  overflow: hidden; /* disables scrolling */
+  box-shadow: 2px 0 5px var(--shadow-color);
+  z-index: 100;
+  position: fixed; /* make it stay in place */
+  top: 0;
+  left: 0;
+  height: 100vh; /* full viewport height */
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem;
+  background: var(--form-bg);
+  border-bottom: 1px solid var(--input-bg);
+}
+
+.sidebar-header h2 {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+}
+
+.toggle-icon {
+  font-size: 1.4rem;
+  color: var(--white);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.toggle-icon:hover {
+  color: var(--hover-color);
+  transform: scale(1.1);
+}
+
+/* Sidebar links */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  color: var(--white);
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-link .icon {
+  font-size: 1.6rem;
+  margin-right: 1rem;
+  transition: transform 0.3s ease, font-size 0.3s ease;
+}
+
+.sidebar-link:hover {
+  background-color: var(--hover-color);
+  color: var(--dark-bg);
+}
+
+.sidebar-link:hover .icon {
+  transform: scale(1.2);
+  color: var(--dark-bg);
+}
+
+/* Collapsed Sidebar */
+.admin-dashboard.collapsed .admin-sidebar {
+  width: 70px;
+}
+
+.admin-dashboard.collapsed .sidebar-header h2,
+.admin-dashboard.collapsed .sidebar-link span {
+  display: none;
+}
+
+.admin-dashboard.collapsed .sidebar-link {
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.admin-dashboard.collapsed .sidebar-link .icon {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+/* MAIN SECTION */
+.admin-main {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+/* HEADER */
+.admin-header h1 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+}
+
+/* OVERVIEW CARDS */
+.admin-overview {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.overview-card {
+  background-color: var(--form-bg);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px var(--shadow-color);
+  flex: 1;
+  transition: transform 0.3s ease;
+}
+
+.overview-card h3 {
+  color: var(--lighter-gray);
+  margin-bottom: 0.5rem;
+}
+
+.overview-card p {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* ACTIVITY LIST */
+.admin-activity h2 {
+  margin-bottom: 1rem;
+  color: var(--hover-color);
+}
+
+.admin-activity ul {
+  list-style: none;
+  padding: 1rem;
+  background-color: var(--form-bg);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.admin-activity ul li {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--input-bg);
+}
+
+.admin-activity ul li:last-child {
+  border-bottom: none;
+}
+
+/* ADMINS SECTION */
+.admin-section {
+  margin-top: 2.5rem;
+}
+
+.admin-section h2 {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.admin-cards {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.admin-card {
+  background-color: var(--form-bg);
+  padding: 1rem;
+  border-radius: 10px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 2px 5px var(--shadow-color);
+  transition: transform 0.3s ease;
+}
+
+.admin-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 0.8rem;
+}
+
+.admin-card h4 {
+  color: var(--hover-color);
+  margin-bottom: 0.2rem;
+}
+
+.admin-card p {
+  color: var(--light-gray);
+  font-size: 0.9rem;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {
+  .admin-overview {
+    flex-direction: column;
+  }
+
+  .admin-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.action-message {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: var(--error-red);
+
+  border-radius: 5px;
+  color: var(--input-bg);
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+}

@@ -1,0 +1,223 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap");
+
+:root {
+  --primary-color: #fbba3f;
+  --hover-color: #ffd873;
+  --dark-bg: #1e1e2f;
+  --panel-dark: #2d2d3d;
+  --form-bg: #29293d;
+  --input-bg: #3a3a4d;
+  --white: #ffffff;
+  --light-gray: #ccc;
+  --lighter-gray: #cedbe9;
+  --error-red: #ff6b6b;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --glass: rgba(255, 255, 255, 0.05);
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  background-color: var(--dark-bg);
+  overflow-x: hidden;
+  cursor: url("https://cdn.custom-cursor.com/db/3548/32/matrix-glowing-cursor.png"),
+    auto;
+}
+
+.landing-container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.left-side {
+  flex: 1;
+  z-index: 2;
+  max-width: 50%;
+  padding: 2rem;
+}
+
+.glass-card {
+  background: var(--glass);
+  border-radius: 16px;
+  padding: 3rem;
+  box-shadow: 0 8px 32px var(--shadow-color);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.left-side h1 {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.left-side p {
+  font-size: 1.2rem;
+  color: var(--light-gray);
+  margin-bottom: 2rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 0.9rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--dark-bg);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  transform: scale(1.05);
+  background-color: var(--hover-color);
+  color: var(--dark-bg);
+}
+
+.glow {
+  box-shadow: 0 0 15px var(--primary-color);
+}
+
+.right-side {
+  flex: 1;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-side img {
+  width: 90%;
+  max-width: 480px;
+  border-radius: 12px;
+  animation: rotateSlightly 12s infinite linear;
+  box-shadow: 0 6px 24px var(--shadow-color);
+}
+
+.floating-img {
+  filter: drop-shadow(0px 0px 8px var(--primary-color));
+}
+
+.floating-shapes .circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.07;
+  z-index: 0;
+  animation: float 12s ease-in-out infinite;
+}
+
+.circle.one {
+  width: 180px;
+  height: 180px;
+  background: var(--primary-color);
+  top: 10%;
+  left: 5%;
+}
+
+.circle.two {
+  width: 300px;
+  height: 300px;
+  background: var(--hover-color);
+  bottom: 20%;
+  right: 5%;
+}
+
+.circle.three {
+  width: 150px;
+  height: 150px;
+  background: var(--lighter-gray);
+  top: 70%;
+  left: 50%;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes rotateSlightly {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(1deg);
+  }
+}
+
+/* Animation effects */
+.animate-fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s forwards;
+}
+
+.animate-slide-in {
+  opacity: 0;
+  transform: translateX(50px);
+  animation: slideIn 1.2s forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .landing-container {
+    flex-direction: column-reverse;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .left-side,
+  .right-side {
+    max-width: 100%;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-side h1 {
+    font-size: 2.5rem;
+  }
+}

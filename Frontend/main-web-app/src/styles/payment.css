@@ -1,0 +1,114 @@
+/* Payment Confirmation Page Styles */
+.payment-confirmation-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+  }
+  
+  .payment-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .payment-header h2 {
+    font-size: 2rem;
+    color: #3a3a3a;
+  }
+  
+  .payment-header p {
+    color: #5a5a5a;
+    font-size: 1rem;
+  }
+  
+  .payment-details {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .payment-details h3 {
+    font-size: 1.5rem;
+    color: #4a4a4a;
+    margin-bottom: 15px;
+  }
+  
+  .payment-details p {
+    font-size: 1rem;
+    color: #6b6b6b;
+    margin-bottom: 10px;
+  }
+  
+  .payment-status {
+    text-align: center;
+  }
+  
+  .confirm-payment-btn {
+    background-color: #f8b400;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 12px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .confirm-payment-btn:hover {
+    background-color: #d98f00;
+  }
+  
+  .status-message {
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  
+  .status-message.success {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .status-message.failed {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  .retry-payment-btn {
+    background-color: #ff6b6b;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .retry-payment-btn:hover {
+    background-color: #d53f3f;
+  }
+  
+  .back-to-home {
+    margin-top: 30px;
+  }
+  
+  .back-to-home-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+  }
+  
+  .back-to-home-btn:hover {
+    background-color: #45a049;
+  }
+  
