@@ -392,109 +392,81 @@ body {
   }
 }
 
-/* Responsive Adjustments */
-@media (max-width: 1200px) {
-  .robot-img {
-    margin-left: -30px;
-  }
-
-  .knee-caption {
-    font-size: 1.3rem;
-    max-width: 280px;
-  }
-}
-
-@media (max-width: 992px) {
-  .right-panel .logo-wrapper {
-    max-width: 160px;
-  }
-
-  .input-icon {
-    left: 12px;
-    font-size: 1rem;
-  }
-
-  .input-wrapper input {
-    padding-left: 2.5rem;
-  }
-
-  .signup-form-box h2 {
-    font-size: 1.6rem;
-  }
-}
-
+//* Updated Responsive Layout */
 @media (max-width: 768px) {
   .signup-ui-container {
-    flex-direction: column;
-    min-height: auto;
+    flex-direction: column-reverse; /* Photo on top */
+    min-height: 100vh;
   }
 
   .left-panel {
-    display: none;
-  }
-
-  .right-panel {
-    width: 100%;
-    padding: 1.5rem;
+    display: flex;
+    flex: none;
+    height: 200px; /* Fixed height for image */
     min-height: auto;
+    justify-content: center;
+    align-items: center;
     background-color: var(--dark-bg);
+    animation: fadeIn 0.8s ease-out;
   }
 
-  .signup-form-box {
-    max-width: 100%;
-    padding: 2rem 1.5rem;
-    border-radius: 16px;
-    max-height: none;
-    margin: 0;
+  .robot-wrapper {
+    height: 100%;
+    align-items: center;
   }
 
-  .right-panel .logo-wrapper {
-    position: relative;
-    margin: 0 auto 1rem;
-    top: auto;
-    left: auto;
-    transform: none;
-    max-width: 150px;
+  .robot-img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin-left: 0;
+    object-position: center;
   }
 
   .knee-caption {
+    display: none; /* Hide caption on mobile or reposition */
+  }
+
+  .right-panel {
+    flex: 1;
+    padding: 1.5rem;
+    min-height: calc(100vh - 200px);
+    animation: fadeInUp 0.8s ease-out;
+  }
+
+  .signup-form-box {
+    margin-top: 0;
+    max-height: none;
+    overflow-y: visible;
+    padding: 2rem 1.5rem;
+  }
+
+  /* Alternative: Show caption below image */
+  /* .knee-caption {
     position: relative;
     bottom: auto;
     left: auto;
-    font-size: 1.2rem;
-    padding: 0.8rem;
-    max-width: 100%;
     margin: 1rem auto;
     text-align: center;
-    background: rgba(29, 29, 45, 0.8);
-  }
-
-  .user-type-selection {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .user-type-selection label {
-    font-size: 0.95rem;
-    white-space: normal;
-  }
+    max-width: 90%;
+    font-size: 1.1rem;
+    padding: 0.8rem;
+  } */
 }
 
-@media (max-width: 576px) {
-  .right-panel .logo-wrapper {
-    max-width: 130px;
-    margin-bottom: 0.5rem;
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .left-panel {
+    height: 180px;
   }
 
-  .input-icon {
-    left: 10px;
-    font-size: 0.9rem;
+  .robot-img {
+    max-width: 300px;
   }
 
-  .input-wrapper input {
-    padding-left: 2.2rem;
-    font-size: 0.9rem;
+  .right-panel {
+    min-height: calc(100vh - 180px);
+    padding: 1rem;
   }
 
   .signup-form-box {
@@ -503,38 +475,58 @@ body {
 
   .signup-form-box h2 {
     font-size: 1.5rem;
-    margin-top: 0;
+    margin-bottom: 1.2rem;
+  }
+}
+
+/* Very small devices */
+@media (max-width: 360px) {
+  .left-panel {
+    height: 150px;
   }
 
-  .social-login {
-    flex-direction: column;
-    gap: 0.8rem;
+  .robot-img {
+    max-width: 250px;
+  }
+
+  .right-panel {
+    min-height: calc(100vh - 150px);
+  }
+}
+
+/* New Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Enhanced Form Elements for Mobile */
+@media (max-width: 768px) {
+  .input-wrapper {
+    margin-bottom: 0.6rem;
+  }
+
+  .input-wrapper input {
+    height: 42px;
+    font-size: 0.9rem;
+  }
+
+  .signup-btn {
+    padding: 0.7rem;
+    font-size: 0.95rem;
   }
 
   .social-login button {
-    width: 100%;
+    min-width: 100px;
+    padding: 0.7rem;
+    font-size: 0.85rem;
   }
 
   .terms label {
     font-size: 0.8rem;
   }
-
-  .knee-caption {
-    font-size: 1.1rem;
-    padding: 0.6rem;
-  }
-}
-
-/* Scrollbar Styling */
-.signup-form-box::-webkit-scrollbar {
-  width: 6px;
-}
-
-.signup-form-box::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.signup-form-box::-webkit-scrollbar-thumb {
-  background-color: var(--primary-color);
-  border-radius: 3px;
 }

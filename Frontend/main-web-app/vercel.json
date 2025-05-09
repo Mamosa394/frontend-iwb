@@ -1,4 +1,6 @@
 {
-  "buildCommand": "npx vite build",
-  "outputDirectory": "dist"
+  "buildCommand": "cd Frontend/main-web-app && npm install && npm run build",
+  "outputDirectory": "Frontend/main-web-app/dist",
+  "ignoreCommand": "false",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
