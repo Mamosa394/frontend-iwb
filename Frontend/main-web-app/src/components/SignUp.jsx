@@ -11,7 +11,10 @@ const LoadingScreen = () => {
   return (
     <div className="loading-screen">
       <div className="loader">
-        <div></div><div></div><div></div><div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
       <p>Signing you up, please wait...</p>
     </div>
@@ -26,6 +29,7 @@ const SignUp = () => {
     email: "",
     password: "",
     adminCode: "",
+    userType: "Investor", // Default user type is Investor
   });
 
   const [isAdmin, setIsAdmin] = useState(false);
@@ -42,6 +46,10 @@ const SignUp = () => {
     setFormData({ ...formData, adminCode: "" });
   };
 
+  const handleUserTypeChange = (e) => {
+    setFormData({ ...formData, userType: e.target.value });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -49,10 +57,13 @@ const SignUp = () => {
     setSuccess("");
 
     try {
-      const res = await axios.post("https://backend-8-gn1i.onrender.com/api/auth/signup", {
-        ...formData,
-        isAdmin,
-      });
+      const res = await axios.post(
+        "https://backend-8-gn1i.onrender.com/api/auth/signup",
+        {
+          ...formData,
+          isAdmin,
+        }
+      );
 
       setSuccess(res.data.message || "Account created successfully!");
       setTimeout(() => {
@@ -60,8 +71,7 @@ const SignUp = () => {
       }, 2000);
     } catch (err) {
       setError(
-        err.response?.data?.message ||
-          "Something went wrong. Please try again."
+        err.response?.data?.message || "Something went wrong. Please try again."
       );
     } finally {
       setLoading(false);
@@ -156,6 +166,30 @@ const SignUp = () => {
                 />
               </div>
             )}
+
+            {/* User Type Selection */}
+            <div className="user-type-selection">
+              <label>
+                <input
+                  type="radio"
+                  name="userType"
+                  value="Investor"
+                  checked={formData.userType === "Investor"}
+                  onChange={handleUserTypeChange}
+                />
+                Investor
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="userType"
+                  value="Developer"
+                  checked={formData.userType === "Developer"}
+                  onChange={handleUserTypeChange}
+                />
+                Developer
+              </label>
+            </div>
 
             <div className="terms">
               <input type="checkbox" required className="tick" id="terms" />

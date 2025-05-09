@@ -1,0 +1,24 @@
+.pageContainer {
+  padding: 40px 30px;
+  background-color: var(--dark-bg);
+  min-height: 100vh;
+  color: var(--lighter-gray);
+  animation: fadeIn 0.8s ease;
+}
+
+h2 {
+  font-size: 32px;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

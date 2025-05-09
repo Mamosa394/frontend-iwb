@@ -5,6 +5,17 @@ import "../styles/Home2.css";
 const LandingPage = () => {
   return (
     <div className="landing-container">
+      <div className="video-background">
+        <video
+          src="/videos/demo.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="video-bg"
+        />
+      </div>
+
       <div className="floating-shapes">
         <div className="circle one"></div>
         <div className="circle two"></div>

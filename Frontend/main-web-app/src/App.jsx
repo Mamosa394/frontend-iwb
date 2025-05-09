@@ -21,7 +21,10 @@ import OtpVerification from "./pages/OtpVerification";
 import About from "./pages/About";
 import PaymentConfirmation from "./pages/PaymentConfirmation";
 import NetIncomePage from "./pages/NetIncomePage";
-
+import ProjectCharts from "./pages/ProjectCharts";
+import ForexCharts from "./pages/ForexOverview";
+import StockAnalysis from "./pages/StockAnalysis";
+import MarketTrends from "./pages/MarketTrends";
 
 const App = () => {
   return (
@@ -36,7 +39,10 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/home-page" element={<Home />} />
               <Route path="/inventory" element={<Inventory />} />
-              <Route path="/dashboard/admin/add-product" element={<AddProduct />} />
+              <Route
+                path="/dashboard/admin/add-product"
+                element={<AddProduct />}
+              />
               <Route path="/income-statements" element={<IncomeStatement />} />
               <Route path="/sales-dashboard" element={<SalesDashboard />} />
               <Route path="/landing-page" element={<IWBHome />} />
@@ -54,6 +60,10 @@ const App = () => {
               <Route path="/repairs" element={<Repairs />} />
               <Route path="/payment" element={<PaymentConfirmation />} />
               <Route path="/net-income" element={<NetIncomePage />} />
+              <Route path="/project-chart" element={<ProjectCharts />} />
+              <Route path="/forex" element={<ForexCharts />} />
+              <Route path="/stock-analysis" element={<StockAnalysis />} />
+              <Route path="/market-trends" element={<MarketTrends />} />
             </Routes>
           </main>
         </div>

@@ -1,0 +1,176 @@
+/* Header Container */
+.investor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px; /* Adjust padding to reduce space on the left and right */
+  background-color: var(--dark-bg);
+  box-shadow: 0 4px 8px var(--shadow-color);
+  border-radius: 8px;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+/* Left Section */
+.header-left .header-title {
+  font-size: 32px;
+  color: var(--primary-color);
+  font-weight: bold;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* Right Section */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: flex-end; /* Keep it aligned to the right */
+  position: relative;
+  width: auto;
+  flex-wrap: nowrap;
+  flex: 1;
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.nav-links.open {
+  display: flex;
+}
+
+/* Each nav-link takes full width on mobile */
+.nav-link {
+  padding: 12px;
+  text-align: center;
+  background-color: var(--panel-dark);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  background-color: var(--hover-color);
+  color: var(--dark-bg);
+  transform: scale(1.05);
+}
+
+.nav-link.active {
+  background-color: var(--primary-color);
+  color: var(--dark-bg);
+}
+
+/* Hamburger Menu Button (Inside Header) */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 10;
+  align-self: center;
+}
+
+/* Hamburger Icon */
+.hamburger {
+  width: 25px;
+  height: 3px;
+  background-color: var(--white);
+  position: relative;
+  display: block;
+}
+
+.hamburger:before,
+.hamburger:after {
+  content: "";
+  width: 25px;
+  height: 3px;
+  background-color: var(--white);
+  position: absolute;
+  left: 0;
+  transition: 0.3s ease;
+}
+
+.hamburger:before {
+  top: -8px;
+}
+
+.hamburger:after {
+  top: 8px;
+}
+
+/* Open state for hamburger */
+.menu-toggle.open .hamburger {
+  background-color: transparent;
+}
+
+.menu-toggle.open .hamburger:before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.menu-toggle.open .hamburger:after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .investor-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 20px; /* Adjust padding for mobile */
+  }
+
+  .header-left .header-title {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  .header-right {
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Show nav-links as a column on mobile */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: var(--dark-bg);
+    padding: 20px 0;
+    box-sizing: border-box;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  /* Make each nav-link take full width on mobile */
+  .nav-link {
+    width: 100%;
+    padding: 12px;
+  }
+
+  /* Hamburger menu should now be inside the header */
+  .menu-toggle {
+    display: block;
+    margin-left: auto; /* Keep the hamburger on the far right */
+    padding: 8px;
+  }
+}

@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link } from "react-router-dom";
 import { Chart } from "react-chartjs-2";
-import "../styles/incomeStatement.css";
+import "../styles/net-income.css";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -13,6 +13,7 @@ import {
   Legend,
   ArcElement,
 } from "chart.js";
+import InvestorHeader from "./InvestorHeader";
 
 // Initialize Chart.js
 ChartJS.register(
@@ -20,7 +21,7 @@ ChartJS.register(
   LinearScale,
   BarElement,
   LineElement,
-  ArcElement, // Register PieElement as ArcElement for Pie chart
+  ArcElement,
   Title,
   Tooltip,
   Legend
@@ -28,18 +29,17 @@ ChartJS.register(
 
 // Hardcoded data (No backend involved)
 const incomeData = {
-  revenue: 3000000, // 3 million Maloti
-  costOfGoodsSold: 800000, // Example Cost of Goods Sold
-  operatingExpenses: 500000, // Example Operating Expenses
-  taxes: 200000, // Example Taxes
-  additionalCategories: [
-    { label: "Miscellaneous", amount: 100000 }, // Example Additional Category
-  ],
+  revenue: 3000000,
+  costOfGoodsSold: 800000,
+  operatingExpenses: 500000,
+  taxes: 200000,
+  additionalCategories: [{ label: "Miscellaneous", amount: 100000 }],
 };
 
 const NetIncomePage = () => {
   const grossProfit = incomeData.revenue - incomeData.costOfGoodsSold;
-  const netIncome = grossProfit - incomeData.operatingExpenses - incomeData.taxes;
+  const netIncome =
+    grossProfit - incomeData.operatingExpenses - incomeData.taxes;
   const totalAdditionalExpenses = incomeData.additionalCategories.reduce(
     (sum, category) => sum + Number(category.amount),
     0
@@ -66,15 +66,15 @@ const NetIncomePage = () => {
     datasets: [
       {
         label: "Net Income",
-        data: months.map(() => Math.floor(Math.random() * 5000) - 2500), // Random data for visualization
-        backgroundColor: "#6ee7b7", // Green
+        data: months.map(() => Math.floor(Math.random() * 5000) - 2500),
+        backgroundColor: "#6ee7b7",
         borderColor: "#34d399",
         borderWidth: 1,
       },
       {
         label: "Expenses",
-        data: months.map(() => Math.floor(Math.random() * 1000)), // Random expenses for visualization
-        backgroundColor: "#ff4d4d", // Red
+        data: months.map(() => Math.floor(Math.random() * 1000)),
+        backgroundColor: "#ff4d4d",
         borderColor: "#e02424",
         borderWidth: 1,
       },
@@ -99,84 +99,87 @@ const NetIncomePage = () => {
   };
 
   return (
-    <div className="income-statement-page" style={{ display: "flex" }}>
-      {/* Sidebar */}
-      <div className="admin-sidebar" style={styles.sidebar}>
-        <div className="sidebar-header" style={styles.header}>
-          <h2 style={styles.title}>Admin Panel</h2>
-        </div>
-        <div className="sidebar-menu" style={styles.menu}>
-          <ul style={styles.menuList}>
-            <li>
-              <Link to="/home-page" style={styles.link}>
-                Home Page
-              </Link>
-            </li>
-            <li>
-              <Link to="/inventory" style={styles.link}>
-                Inventory
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-
+    <div className="investment-net-income-page">
+      <InvestorHeader />
       {/* Main Content */}
-      <div className="income-statement-container" style={{ marginLeft: "250px", padding: "20px" }}>
-        <h1 className="income-statement-title">Projected Monthly Income Statement</h1>
+      <div className="investment-net-income-container">
+        <h1 className="investment-net-income-title">
+          Projected Income Statement for Investors
+        </h1>
+
+        {/* Financial Overview Section */}
+        <div className="investment-financial-overview">
+          <h2 className="investment-section-title">
+            Company Financial Overview
+          </h2>
+          <p className="investment-financial-summary">
+            Our company has achieved strong revenue growth in recent quarters,
+            driven by increasing demand for our products and services. Our
+            financial health remains solid, with a healthy gross profit margin,
+            despite challenges in operating expenses and taxes.
+          </p>
+        </div>
 
         {/* Net Income Section */}
-        <div className="chart-section">
-          <p className="net-income">
+        <div className="investment-chart-section">
+          <p className="investment-net-income">
             Net Income: M {finalNetIncome.toFixed(2)}
           </p>
-          <div className="chart-container">
-            <div className="chart-item">
+          <div className="investment-chart-container">
+            {/* Bar chart (Net Income) */}
+            <div className="investment-chart-item">
               <Chart type="bar" data={chartData} />
             </div>
-            <div className="chart-item">
+
+            {/* Pie chart (Revenue, COGS, Expenses, Taxes) */}
+            <div className="investment-chart-item">
               <Chart type="pie" data={pieChartData} />
             </div>
           </div>
         </div>
+
+        {/* Key Metrics Section */}
+        <div className="investment-key-metrics">
+          <h2 className="investment-section-title">Key Financial Metrics</h2>
+          <ul className="investment-metrics-list">
+            <li className="investment-metrics-item">
+              <strong>Revenue Growth:</strong> 15% year-over-year
+            </li>
+            <li className="investment-metrics-item">
+              <strong>Gross Profit Margin:</strong> 73%
+            </li>
+            <li className="investment-metrics-item">
+              <strong>Operating Expenses to Revenue Ratio:</strong> 16.7%
+            </li>
+            <li className="investment-metrics-item">
+              <strong>Return on Investment (ROI):</strong> 22%
+            </li>
+          </ul>
+        </div>
+
+        {/* Future Projections Section */}
+        <div className="investment-projections">
+          <h2 className="investment-section-title">Future Projections</h2>
+          <p className="investment-projection-summary">
+            We project steady revenue growth over the next five years, driven by
+            new market expansion and strategic partnerships. Expenses are
+            expected to be managed efficiently, with a target of improving net
+            income margins.
+          </p>
+        </div>
+
+        {/* Links to Home and Logout */}
+        <div className="investment-links">
+          <Link to="/home-page" className="investment-link">
+            Go to Home Page
+          </Link>
+          <Link to="/logout" className="investment-link">
+            Logout
+          </Link>
+        </div>
       </div>
     </div>
   );
-};
-
-const styles = {
-  sidebar: {
-    width: '250px',
-    height: '100vh',
-    backgroundColor: '#1e1e2f', // Dark background
-    padding: '20px',
-    color: '#fff',
-    position: 'fixed',
-    top: 0,
-    left: 0,
-  },
-  header: {
-    marginBottom: '30px',
-  },
-  title: {
-    color: '#FBBA3F', // Gold color
-    fontSize: '24px',
-  },
-  menu: {
-    listStyleType: 'none',
-    padding: 0,
-  },
-  menuList: {
-    marginTop: '20px',
-  },
-  link: {
-    textDecoration: 'none',
-    color: '#FBBA3F', // Gold color
-    fontSize: '18px',
-    display: 'block',
-    padding: '10px 0',
-    listStyleType: 'none',
-  },
 };
 
 export default NetIncomePage;

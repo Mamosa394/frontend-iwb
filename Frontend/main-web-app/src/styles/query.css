@@ -9,18 +9,19 @@
   --lighter-gray: #cedbe9;
   --error-red: #ff6b6b;
   --shadow-color: rgba(0, 0, 0, 0.4);
+  --transition-speed: 0.3s;
 }
 
-/* Container for the entire query form and chart */
+/* Base container */
 .query-container {
-  width: 100vw;     
-  height: 100vh;    
-  padding: 20px;   
-  background-color: var(--form-bg); 
+  width: 100%;
+  min-height: 100vh;
+  padding: 1rem;
+  background-color: var(--form-bg);
   box-sizing: border-box;
-  overflow-y: auto; 
 }
-/* PopupMessage.css */
+
+/* Popup styles */
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -37,91 +38,90 @@
 .popup-container {
   background-color: var(--dark-bg);
   border-radius: 10px;
-  padding: 20px;
+  padding: 1.5rem;
   text-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  width: 300px;
+  width: 90%;
+  max-width: 300px;
 }
 
 .popup-message {
-  font-size: 18px;
-  margin-bottom: 20px;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
   color: var(--complete-color);
 }
 
 .popup-close-btn {
-  padding: 10px 20px;
+  padding: 0.8rem 1.5rem;
   background-color: var(--primary-color);
   color: var(--dark-bg);
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-weight: bolder;
+  font-weight: bold;
+  transition: all var(--transition-speed) ease;
 }
 
 .popup-close-btn:hover {
   background-color: var(--dark-bg);
   color: var(--primary-color);
-  box-shadow: 0px 0px 0px 1px var(--primary-color);
- }
+  box-shadow: 0 0 0 1px var(--primary-color);
+}
 
-/* Title styling */
+/* Typography */
 .query-title {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
   color: var(--primary-color);
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
   text-align: center;
 }
 
-/* Subtitle styling */
 .query-subtitle {
-  margin-top: 40px;
-  margin-bottom: 20px;
-  font-size: 1.5rem;
+  margin: 2rem 0 1.5rem;
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
   color: var(--primary-color);
   text-align: center;
 }
 
-/* Flex layout for form and chart */
+/* Form and chart layout */
 .query-form-chart {
   display: flex;
-  gap: 30px;
+  gap: 1.5rem;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
 }
 
-/* FORM STYLING */
+/* Form styling */
 .query-form {
   background-color: var(--input-bg);
-  padding: 50px;
-  padding-right: 64px ;
+  padding: clamp(1.5rem, 3vw, 2rem);
   border-radius: 12px;
   flex: 1 1 400px;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease;
 }
 
-/* Hover effect for form */
 .query-form:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 16px var(--shadow-color);
 }
 
+/* Form elements */
 .form-input,
 .form-textarea {
   width: 100%;
-  margin-bottom: 15px;
-  margin-right: 10px;
-  padding: 12px;
+  margin-bottom: 1rem;
+  padding: 0.8rem;
   border: none;
   border-radius: 8px;
   background-color: var(--form-bg);
   color: var(--white);
-  transition: background 0.3s ease, border-color 0.3s ease;
+  font-size: 1rem;
+  transition: all var(--transition-speed) ease;
 }
 
-/* Input fields focus effect */
 .form-input:focus,
 .form-textarea:focus {
   background-color: var(--input-bg);
@@ -129,56 +129,58 @@
 }
 
 .form-textarea {
-  min-height: 100px;
+  min-height: 120px;
   resize: vertical;
 }
 
 .form-button {
-  width: 30%;
-  padding: 10px;
-  margin-left: 150px;
+  width: 100%;
+  max-width: 200px;
+  padding: 0.8rem;
+  margin: 1rem auto 0;
+  display: block;
   background-color: var(--primary-color);
   color: var(--dark-bg);
   font-weight: bold;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.3s ease;
+  transition: all var(--transition-speed) ease;
 }
 
-/* Button hover effect */
 .form-button:hover {
-  background-color: var(--hover-color, #ffd873);
+  background-color: var(--hover-color);
   transform: scale(1.05);
 }
 
-/* Status message */
 .status-message {
-  margin-top: 10px;
+  margin-top: 1rem;
   color: var(--light-gray);
   font-style: italic;
+  text-align: center;
 }
 
-/* CHART */
+/* Chart container */
 .chart-container {
   flex: 1 1 400px;
-  padding: 20px;
+  padding: 1.5rem;
   background-color: var(--input-bg);
   border-radius: 12px;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease;
 }
 
-/* Hover effect for chart */
 .chart-container:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 16px var(--shadow-color);
 }
 
-/* TABLE STYLING */
+/* Table styling */
 .table-wrapper {
   overflow-x: auto;
-  margin-top: 20px;
+  margin-top: 1.5rem;
+  -webkit-overflow-scrolling: touch;
 }
 
 .query-table {
@@ -190,33 +192,31 @@
   box-shadow: 0 0 8px var(--shadow-color);
 }
 
-/* Table cell and header styling */
 .query-table th,
 .query-table td {
-  padding: 12px 15px;
+  padding: 0.8rem 1rem;
   text-align: left;
   border-bottom: 1px solid var(--dark-bg);
 }
 
-/* Table header styling */
 .query-table th {
   background-color: var(--form-bg);
   color: var(--lighter-gray);
+  position: sticky;
+  top: 0;
 }
 
-/* Hover effect on table rows */
 .query-table tr:hover {
   background-color: #34344d;
-  transition: background 0.3s ease;
 }
 
 .selected {
   background-color: rgba(251, 186, 63, 0.2);
 }
 
-/* Status color styles */
+/* Status indicators */
 .status-pending {
-  color: #FF6347;
+  color: #ff6347;
   font-weight: bold;
 }
 
@@ -235,14 +235,71 @@
   color: var(--complete-color);
 }
 
-/* Checkbox alignment */
+/* Checkbox styling */
 .query-table input[type="checkbox"] {
-  transform: scale(1.1);
+  transform: scale(1.2);
+  margin: 0;
+  cursor: pointer;
 }
 
-/* RESPONSIVE DESIGN */
+/* Responsive adjustments */
 @media (max-width: 900px) {
   .query-form-chart {
     flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .query-form,
+  .chart-container {
+    width: 100%;
+    flex: none;
+  }
+
+  .form-button {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .query-container {
+    padding: 0.8rem;
+  }
+
+  .query-title {
+    margin-bottom: 1rem;
+  }
+
+  .query-subtitle {
+    margin: 1.5rem 0 1rem;
+  }
+
+  .query-form,
+  .chart-container {
+    padding: 1.2rem;
+  }
+
+  .form-input,
+  .form-textarea {
+    padding: 0.7rem;
+    font-size: 0.95rem;
+  }
+
+  .query-table th,
+  .query-table td {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .query-table th,
+  .query-table td {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .form-button {
+    padding: 0.7rem;
+    font-size: 0.9rem;
   }
 }

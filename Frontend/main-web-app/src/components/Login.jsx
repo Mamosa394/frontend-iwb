@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/Login.css";
-import "../styles/LoadingScreen.css"; // make sure this is added
+import "../styles/LoadingScreen.css";
 import robotImage from "/images/ROBOT.png";
 
 const LoadingScreen = () => (
   <div className="loading-screen">
     <div className="loader">
-      <div></div><div></div><div></div><div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
     <p>Logging you in, please wait...</p>
   </div>
@@ -16,14 +19,13 @@ const LoadingScreen = () => (
 
 const Login = () => {
   const navigate = useNavigate();
-
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,23 +35,26 @@ const Login = () => {
     }));
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
 
     try {
-      const response = await axios.post("https://backend-8-gn1i.onrender.com/api/auth/login", formData);
-
-      // localStorage.setItem("token", response.data.token); // optional
-
+      const response = await axios.post(
+        "https://backend-8-gn1i.onrender.com/api/auth/login",
+        formData
+      );
+      localStorage.setItem("token", response.data.token);
       navigate("/home-page");
     } catch (err) {
-      if (err.response?.data?.message) {
-        setError(err.response.data.message);
-      } else {
-        setError("An error occurred. Please try again.");
-      }
+      setError(
+        err.response?.data?.message || "An error occurred. Please try again."
+      );
     } finally {
       setLoading(false);
     }
@@ -60,6 +65,7 @@ const Login = () => {
   return (
     <div className="login-page-body">
       <div className="login-page-container">
+        {/* Left Panel */}
         <div className="login-page-left-panel-container">
           <div className="login-page-left-panel">
             <div className="login-page-robot-container">
@@ -77,17 +83,20 @@ const Login = () => {
           </div>
         </div>
 
+        {/* Right Panel */}
         <div className="login-page-right-panel-container">
           <div className="login-page-right-panel">
             <div className="login-page-signup-form-box">
               <div className="login-page-glow-border"></div>
               <h2>Welcome back</h2>
               <p className="login-page-login-text">
-                Do not have an account? <a href="/signup">Sign Up</a>
+                Don't have an account? <a href="/signup">Sign Up</a>
               </p>
 
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} className="login-page-form">
+                {/* Email Input */}
                 <div className="login-page-input-wrapper">
+                  <i className="login-page-input-icon fas fa-envelope"></i>
                   <input
                     type="email"
                     className="login-page-input"
@@ -99,9 +108,11 @@ const Login = () => {
                   />
                 </div>
 
+                {/* Password Input */}
                 <div className="login-page-input-wrapper">
+                  <i className="login-page-input-icon fas fa-lock"></i>
                   <input
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     className="login-page-input"
                     name="password"
                     value={formData.password}
@@ -109,6 +120,12 @@ const Login = () => {
                     placeholder="Password"
                     required
                   />
+                  <i
+                    className={`password-toggle fas ${
+                      showPassword ? "fa-eye-slash" : "fa-eye"
+                    }`}
+                    onClick={togglePasswordVisibility}
+                  ></i>
                 </div>
 
                 {error && <p className="login-page-error">{error}</p>}
@@ -118,7 +135,13 @@ const Login = () => {
                   className="login-page-signup-btn"
                   disabled={loading}
                 >
-                  Login
+                  {loading ? (
+                    <>
+                      <i className="fas fa-spinner fa-spin"></i> Logging in...
+                    </>
+                  ) : (
+                    "Login"
+                  )}
                 </button>
               </form>
             </div>
