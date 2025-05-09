@@ -214,3 +214,28 @@ body {
     align-items: center;
   }
 }
+
+@media (max-width: 400px) {
+  .right-side {
+    margin-top: 3rem;
+  }
+
+  .floating-img {
+    width: 70%;
+    max-height: 220px;
+  }
+
+  .left-side h1 {
+    font-size: 1.8rem;
+  }
+
+  .left-side p {
+    font-size: 1rem;
+  }
+
+  .cta-buttons .btn-primary,
+  .cta-buttons .btn-secondary {
+    font-size: 0.95rem;
+    padding: 0.8rem 1.2rem;
+  }
+}
