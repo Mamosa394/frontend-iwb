@@ -392,141 +392,34 @@ body {
   }
 }
 
-//* Updated Responsive Layout */
+/* Responsive Design */
 @media (max-width: 768px) {
   .signup-ui-container {
-    flex-direction: column-reverse; /* Photo on top */
-    min-height: 100vh;
+    flex-direction: column-reverse;
   }
 
-  .left-panel {
-    display: flex;
+  .left-panel,
+  .right-panel {
     flex: none;
-    height: 200px; /* Fixed height for image */
-    min-height: auto;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--dark-bg);
-    animation: fadeIn 0.8s ease-out;
-  }
-
-  .robot-wrapper {
-    height: 100%;
-    align-items: center;
+    width: 100%;
+    min-height: 50vh;
   }
 
   .robot-img {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
+    max-width: 100%;
     margin-left: 0;
-    object-position: center;
   }
 
   .knee-caption {
-    display: none; /* Hide caption on mobile or reposition */
-  }
-
-  .right-panel {
-    flex: 1;
-    padding: 1.5rem;
-    min-height: calc(100vh - 200px);
-    animation: fadeInUp 0.8s ease-out;
-  }
-
-  .signup-form-box {
-    margin-top: 0;
-    max-height: none;
-    overflow-y: visible;
-    padding: 2rem 1.5rem;
-  }
-
-  /* Alternative: Show caption below image */
-  /* .knee-caption {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    margin: 1rem auto;
-    text-align: center;
-    max-width: 90%;
-    font-size: 1.1rem;
+    bottom: 5%;
+    left: 5%;
+    font-size: 1rem;
     padding: 0.8rem;
-  } */
-}
-
-/* Small mobile devices */
-@media (max-width: 480px) {
-  .left-panel {
-    height: 180px;
-  }
-
-  .robot-img {
-    max-width: 300px;
-  }
-
-  .right-panel {
-    min-height: calc(100vh - 180px);
-    padding: 1rem;
+    max-width: 90%;
   }
 
   .signup-form-box {
-    padding: 1.5rem 1rem;
-  }
-
-  .signup-form-box h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1.2rem;
-  }
-}
-
-/* Very small devices */
-@media (max-width: 360px) {
-  .left-panel {
-    height: 150px;
-  }
-
-  .robot-img {
-    max-width: 250px;
-  }
-
-  .right-panel {
-    min-height: calc(100vh - 150px);
-  }
-}
-
-/* New Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Enhanced Form Elements for Mobile */
-@media (max-width: 768px) {
-  .input-wrapper {
-    margin-bottom: 0.6rem;
-  }
-
-  .input-wrapper input {
-    height: 42px;
-    font-size: 0.9rem;
-  }
-
-  .signup-btn {
-    padding: 0.7rem;
-    font-size: 0.95rem;
-  }
-
-  .social-login button {
-    min-width: 100px;
-    padding: 0.7rem;
-    font-size: 0.85rem;
-  }
-
-  .terms label {
-    font-size: 0.8rem;
+    padding: 2rem 1rem;
+    margin-top: 20px;
   }
 }
