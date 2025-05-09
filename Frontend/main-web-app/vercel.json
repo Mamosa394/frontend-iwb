@@ -1,6 +1,4 @@
 {
-    "rootDirectory": "Frontend/main-web-app",
   "buildCommand": "npx vite build",
-  "outputDirectory": "dist",
-  "framework": null
+  "outputDirectory": "dist"
 }
