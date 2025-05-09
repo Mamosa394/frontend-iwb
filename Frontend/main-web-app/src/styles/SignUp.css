@@ -392,34 +392,184 @@ body {
   }
 }
 
-/* Responsive Design */
+//* Enhanced Mobile Responsiveness */
 @media (max-width: 768px) {
   .signup-ui-container {
-    flex-direction: column-reverse;
+    flex-direction: column;
+    min-height: auto;
   }
 
-  .left-panel,
-  .right-panel {
-    flex: none;
-    width: 100%;
-    min-height: 50vh;
+  .left-panel {
+    order: -1; /* Moves image to top */
+    height: 250px;
+    min-height: 250px;
+    justify-content: center;
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .robot-wrapper {
+    align-items: center;
   }
 
   .robot-img {
-    max-width: 100%;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
     margin-left: 0;
+    object-position: center;
   }
 
   .knee-caption {
-    bottom: 5%;
-    left: 5%;
-    font-size: 1rem;
-    padding: 0.8rem;
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin: 1rem auto;
+    text-align: center;
     max-width: 90%;
+    font-size: 1.1rem;
+    padding: 0.8rem;
+    background: rgba(29, 29, 45, 0.8);
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+  }
+
+  .right-panel {
+    padding: 1.5rem;
+    min-height: auto;
+    background-color: var(--dark-bg);
+    animation: fadeInUp 0.8s ease-out;
   }
 
   .signup-form-box {
-    padding: 2rem 1rem;
-    margin-top: 20px;
+    margin-top: 0;
+    max-height: none;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .logo-wrapper {
+    position: relative;
+    margin: 0 auto 1.5rem;
+    top: auto;
+    left: auto;
+    transform: none;
+  }
+}
+
+/* Tablet Adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .robot-img {
+    max-width: 550px;
+    margin-left: -40px;
+  }
+
+  .knee-caption {
+    font-size: 1.3rem;
+    max-width: 280px;
+  }
+
+  .signup-form-box {
+    padding: 2.5rem 1.5rem;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .left-panel {
+    height: 200px;
+  }
+
+  .robot-img {
+    max-width: 300px;
+  }
+
+  .knee-caption {
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
+
+  .signup-form-box {
+    padding: 1.5rem 1rem;
+  }
+
+  .signup-form-box h2 {
+    font-size: 1.5rem;
+  }
+
+  .input-wrapper input {
+    padding: 0.7rem 1rem 0.7rem 2.5rem;
+    font-size: 0.9rem;
+  }
+
+  .input-icon {
+    font-size: 1rem;
+    left: 12px;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 360px) {
+  .left-panel {
+    height: 180px;
+  }
+
+  .robot-img {
+    max-width: 260px;
+  }
+
+  .user-type-selection label {
+    font-size: 0.9rem;
+    white-space: normal;
+  }
+}
+
+/* New Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Enhanced Form Elements for Mobile */
+@media (max-width: 768px) {
+  .input-wrapper {
+    margin-bottom: 0.7rem;
+  }
+
+  .signup-btn {
+    padding: 0.9rem;
+    font-size: 1rem;
+  }
+
+  .social-login {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .social-login button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .terms label {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+}
+
+/* Smooth Scrolling for Form */
+.signup-form-box {
+  scroll-behavior: smooth;
+}
+
+/* Performance Optimizations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
