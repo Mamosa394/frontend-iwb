@@ -58,9 +58,6 @@ const Header = () => {
         <Link to="/inventory" onClick={closeMobileMenu}>
           Inventory
         </Link>
-        <Link to="/net-income" onClick={closeMobileMenu}>
-          Investors Hub
-        </Link>
         <Link to="/query-form" onClick={closeMobileMenu}>
           Queries
         </Link>
