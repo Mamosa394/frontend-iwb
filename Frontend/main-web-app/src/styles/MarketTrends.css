@@ -1,0 +1,96 @@
+.market-trends-container {
+  padding: 50px 30px;
+  background-color: var(--dark-bg);
+  color: var(--white);
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  border-radius: 18px;
+  box-shadow: 0 6px 18px var(--shadow-color);
+  box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+}
+
+.market-title {
+  font-size: 36px;
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 50px;
+  font-weight: 700;
+}
+
+.market-section {
+  background-color: var(--form-bg);
+  border-radius: 14px;
+  padding: 35px;
+  margin-bottom: 60px;
+  box-shadow: 0 8px 25px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box; /* Ensure padding is handled correctly */
+}
+
+.market-section:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px var(--shadow-color);
+}
+
+.section-title {
+  font-size: 24px;
+  margin-bottom: 25px;
+  color: var(--lighter-gray);
+  font-weight: 600;
+  text-align: left;
+  letter-spacing: 1px;
+}
+
+.chart-wrapper {
+  width: 100%;
+  height: 320px; /* Slightly taller charts for better visibility */
+  margin-top: 20px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-sizing: border-box; /* Ensure chart fits within the container */
+}
+
+@media (max-width: 768px) {
+  .market-trends-container {
+    padding: 30px 20px;
+  }
+
+  .market-title {
+    font-size: 30px;
+  }
+
+  .market-section {
+    padding: 25px;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+
+  .chart-wrapper {
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .market-trends-container {
+    padding: 20px 15px;
+  }
+
+  .market-title {
+    font-size: 26px;
+  }
+
+  .market-section {
+    padding: 20px;
+  }
+
+  .section-title {
+    font-size: 18px;
+  }
+
+  .chart-wrapper {
+    height: 220px;
+  }
+}

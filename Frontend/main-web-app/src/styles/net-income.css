@@ -1,0 +1,292 @@
+/* Root Variables */
+:root {
+  --primary-color: #fbba3f;
+  --hover-color: #ffd873;
+  --dark-bg: #1e1e2f;
+  --panel-dark: #2d2d3d;
+  --form-bg: #29293d;
+  --input-bg: #3a3a4d;
+  --white: #ffffff;
+  --light-gray: #ccc;
+  --lighter-gray: #cedbe9;
+  --error-red: #ff6b6b;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --glass: rgba(255, 255, 255, 0.05);
+}
+
+/* General Layout */
+.investment-net-income-container {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: var(--dark-bg);
+  border-radius: 10px;
+  box-shadow: 0 8px 25px var(--shadow-color);
+  animation: fadeIn 1.2s ease-out;
+  box-sizing: border-box;
+}
+
+/* Header */
+.investment-title {
+  font-size: 40px;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: bold;
+  opacity: 0;
+  animation: slideIn 1s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+/* Content Section */
+.investment-financial-overview {
+  background-color: var(--form-bg);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px var(--shadow-color);
+  margin-bottom: 40px;
+  color: var(--lighter-gray);
+  opacity: 0;
+  animation: fadeInUp 1.5s ease-out forwards;
+  animation-delay: 0.8s;
+}
+
+.investment-financial-summary {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.investment-net-income {
+  font-size: 24px;
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+/* Chart Section */
+.investment-chart-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeInUp 1.8s ease-out forwards;
+  animation-delay: 1.2s;
+}
+
+.investment-chart-item {
+  background-color: var(--panel-dark);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px var(--shadow-color);
+  flex: 1;
+  max-width: 48%;
+  min-width: 320px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: chartReveal 1s ease-out forwards;
+  animation-delay: 0.6s;
+}
+
+.investment-chart-item:nth-child(1) {
+  animation-delay: 0.6s;
+}
+
+.investment-chart-item:nth-child(2) {
+  animation-delay: 0.8s;
+}
+
+.investment-chart-item:hover {
+  box-shadow: 0 8px 30px var(--shadow-color);
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+
+.investment-chart-item canvas {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.investment-chart-item:hover canvas {
+  transform: scale(1.05);
+}
+
+/* Key Metrics */
+.investment-key-metrics {
+  background-color: var(--form-bg);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px var(--shadow-color);
+  margin-bottom: 40px;
+  color: var(--lighter-gray);
+  opacity: 0;
+  animation: fadeInUp 2s ease-out forwards;
+}
+
+.investment-metrics-list {
+  list-style: none;
+  padding: 0;
+}
+
+.investment-metrics-item {
+  font-size: 18px;
+  margin-bottom: 10px;
+  opacity: 0;
+  animation: fadeInLeft 1.5s ease-out forwards;
+  animation-delay: 1.2s;
+}
+
+.investment-metrics-item:nth-child(odd) {
+  animation-delay: 1.3s;
+}
+
+.investment-metrics-item strong {
+  color: var(--primary-color);
+}
+
+/* Links Section */
+.investment-links {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+  opacity: 0;
+  animation: fadeInUp 2.5s ease-out forwards;
+}
+
+.investment-link {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-size: 18px;
+  padding: 12px 30px;
+  border-radius: 8px;
+  background-color: var(--form-bg);
+  box-shadow: 0 4px 10px var(--shadow-color);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.investment-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.investment-link:hover {
+  background-color: var(--hover-color);
+  color: var(--dark-bg);
+}
+
+.investment-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+  transition: transform 0.3s ease-out;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .investment-net-income-container {
+    padding: 20px;
+  }
+
+  .investment-chart-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .investment-chart-item {
+    width: 100%;
+    height: 300px;
+  }
+
+  .investment-title {
+    font-size: 30px;
+  }
+
+  .investment-financial-summary {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .investment-title {
+    font-size: 24px;
+  }
+
+  .investment-financial-summary {
+    font-size: 14px;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes chartReveal {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,181 @@
+/* Define color variables from :root */
+:root {
+  --primary-color: #fbba3f;
+  --hover-color: #ffd873;
+  --dark-bg: #1e1e2f;
+  --panel-dark: #2d2d3d;
+  --form-bg: #29293d;
+  --input-bg: #3a3a4d;
+  --white: #ffffff;
+  --light-gray: #ccc;
+  --lighter-gray: #cedbe9;
+  --error-red: #ff6b6b;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --transition-duration: 0.3s;
+}
+
+/* Admin Inventory container (includes sidebar and content) */
+.admin-inventory-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--dark-bg);
+  transition: margin-left var(--transition-duration); /* Smooth transition for collapsing */
+}
+
+.admin-inventory-container.sidebar-collapsed .inventory-content {
+  margin-left: 80px; /* Adjust when sidebar is collapsed */
+}
+
+.inventory-content {
+  flex: 1; /* Content area */
+  padding: 20px;
+  margin-left: 250px; /* Default when sidebar is expanded */
+  background-color: var(--panel-dark);
+  color: var(--white);
+  transition: margin-left var(--transition-duration);
+}
+
+/* Sidebar styles */
+.admin-sidebar {
+  width: 250px; /* Default expanded width */
+  background-color: var(--panel-dark);
+  color: var(--white);
+  transition: width var(--transition-duration); /* Smooth transition when collapsing */
+}
+
+.admin-sidebar.collapsed {
+  width: 80px; /* Collapsed width */
+}
+
+/* Sidebar collapse button */
+.toggle-sidebar-btn {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color var(--transition-duration);
+}
+
+.toggle-sidebar-btn:hover {
+  background-color: var(--hover-color);
+}
+
+/* Inventory grid styling */
+.inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 10px;
+}
+
+/* Card styling and hover effects */
+.inventory-card {
+  background-color: var(--form-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  overflow: hidden;
+  transition: transform var(--transition-duration),
+    box-shadow var(--transition-duration);
+}
+
+.inventory-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px var(--shadow-color);
+}
+
+/* Inventory image */
+.inventory-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 2px solid var(--lighter-gray);
+}
+
+/* Inventory info (title, price, type) */
+.inventory-info {
+  padding: 15px;
+}
+
+.inventory-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: var(--white);
+}
+
+/* Buttons for actions */
+.card-actions button {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color var(--transition-duration);
+}
+
+.card-actions button:hover {
+  background-color: var(--hover-color);
+}
+
+.delete-btn {
+  background-color: var(--error-red);
+}
+
+.delete-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* Loading and error messages */
+.loading,
+.error {
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--white);
+}
+
+.error {
+  color: var(--error-red);
+  font-weight: bold;
+}
+/* COLLAPSIBLE SIDEBAR STYLES FOR ADMIN INVENTORY */
+
+/* When sidebar is collapsed */
+.admin-sidebar.collapsed {
+  width: 80px;
+  overflow: hidden;
+}
+
+/* Hide text labels when collapsed */
+.admin-sidebar.collapsed .sidebar-label,
+.admin-sidebar.collapsed .sidebar-title {
+  display: none;
+}
+
+/* Center icons when collapsed */
+.admin-sidebar.collapsed .sidebar-item {
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+/* Icon adjustments */
+.admin-sidebar.collapsed .sidebar-icon {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+/* Adjust content margin when sidebar is collapsed */
+.admin-inventory-container.sidebar-collapsed .inventory-content {
+  margin-left: 80px;
+  transition: margin-left var(--transition-duration);
+}
+
+/* Adjust toggle button inside collapsed sidebar */
+.admin-sidebar.collapsed .toggle-sidebar-btn {
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+}

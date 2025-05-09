@@ -1,0 +1,131 @@
+.sales-dashboard-content {
+  margin-left: 250px;
+  padding: 2rem;
+  background-color: var(--dark-bg);
+  color: var(--white);
+  min-height: 100vh;
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.dashboard-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.form-container {
+  flex: 1;
+  min-width: 320px;
+}
+
+.add-sale-form {
+  background-color: var(--panel-dark);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.add-sale-form h2 {
+  margin-bottom: 1rem;
+  color: var(--accent-color);
+}
+
+.sales-input {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--input-bg);
+  color: var(--white);
+}
+
+.sales-button {
+  width: 100%;
+  padding: 0.7rem;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 8px;
+  color: var(--white);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.sales-button:hover {
+  background-color: var(--hover-color);
+}
+
+.new-sale-view {
+  margin-top: 1.5rem;
+  background-color: var(--form-bg);
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.chart-container {
+  flex: 2;
+  min-width: 480px;
+}
+
+.chart-section {
+  background-color: var(--panel-dark);
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.sales-table {
+  background-color: var(--panel-dark);
+  padding: 1rem;
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+.sales-table table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--white);
+}
+
+.sales-table th,
+.sales-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--light-gray);
+  text-align: left;
+}
+
+.sales-table th {
+  background-color: var(--input-bg);
+  color: var(--white);
+}
+
+.sales-table button {
+  margin-right: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.sales-table button:hover {
+  background-color: var(--hover-color);
+}
+
+@media (max-width: 768px) {
+  .sales-dashboard-content {
+    margin-left: 0;
+    padding: 1rem;
+  }
+
+  .dashboard-grid {
+    flex-direction: column;
+  }
+}
