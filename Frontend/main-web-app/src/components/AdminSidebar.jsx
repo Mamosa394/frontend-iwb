@@ -9,7 +9,7 @@ import {
   FaBars 
 } from 'react-icons/fa';
  
-import { Link } from "react-router-dom"; // Ensure this is installed and used
+import { Link } from "react-router-dom"; 
 
 const AdminSidebar = ({ collapsed, toggleSidebar }) => {
   return (
