@@ -1,16 +1,18 @@
 :root {
+  /* Color Palette */
   --primary-color: #fbba3f;
-  --hover-color: #ffd873;
+  --primary-hover: #ffd873;
   --dark-bg: #1e1e2f;
   --panel-dark: #2d2d3d;
   --form-bg: #29293d;
   --input-bg: #3a3a4d;
   --white: #ffffff;
-  --light-gray: #ccc;
-  --lighter-gray: #cedbe9;
+  --light-gray: #e0e0e0;
+  --lighter-gray: #f5f5f5;
   --error-red: #ff6b6b;
-  --shadow-color: rgba(0, 0, 0, 0.4);
-  --max-width: 100%;
+  --success-green: #4caf50;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 /* Base Styles */
@@ -21,192 +23,405 @@
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, sans-serif;
   line-height: 1.6;
   background-color: var(--dark-bg);
   color: var(--white);
 }
 
-/* Unified Auth Container */
-.auth-container {
+/* Main Container */
+.signup-ui-container {
   display: flex;
-  flex-direction: column;
   min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Image Panel - Top Section */
-.image-panel {
-  width: 100%;
-  height: 250px;
-  background-color: var(--form-bg);
+/* Left Panel - Visual Section */
+.left-panel {
+  flex: 1;
+  background: linear-gradient(
+    135deg,
+    var(--form-bg) 0%,
+    var(--panel-dark) 100%
+  );
   display: flex;
   justify-content: center;
-  align-items: center;
-  overflow: hidden;
+  align-items: flex-end;
   position: relative;
-  animation: fadeIn 0.8s ease-out;
+  overflow: hidden;
+  padding: 2rem;
 }
 
-.image-panel img {
+.left-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 400px;
+  height: 100%;
+  background: radial-gradient(
+    circle at 20% 50%,
+    rgba(251, 186, 63, 0.1) 0%,
+    transparent 40%
+  );
+}
+
+.robot-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.robot-img {
+  width: 110%;
+  max-width: 650px;
   height: auto;
   object-fit: contain;
-  transition: transform 0.3s ease;
+  object-position: center bottom;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+  transition: var(--transition);
 }
 
-.image-caption {
+.knee-caption {
   position: absolute;
-  bottom: 20px;
-  width: 90%;
-  text-align: center;
-  color: white;
+  bottom: 15%;
+  left: 5%;
+  font-size: 1.8rem;
+  color: var(--white);
   background: rgba(29, 29, 45, 0.8);
-  padding: 0.8rem;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  margin: 0 auto;
-  backdrop-filter: blur(2px);
-  box-shadow: 0 2px 6px var(--shadow-color);
-  animation: fadeInUp 0.8s ease-out 0.3s both;
+  padding: 1.2rem 1.5rem;
+  border-radius: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  backdrop-filter: blur(8px);
+  z-index: 10;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  max-width: 380px;
+  text-align: left;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeInUp 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 0.3s forwards;
 }
 
-/* Form Panel - Bottom Section */
-.form-panel {
+/* Right Panel - Form Section */
+.right-panel {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: 3rem;
   background-color: var(--dark-bg);
-  animation: fadeInUp 0.8s ease-out;
+  position: relative;
 }
 
-/* Form Container */
-.auth-form-box {
+.right-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 500px;
-  background-color: var(--form-bg);
-  padding: 2.5rem 1.5rem;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(30, 30, 47, 0.9),
+    rgba(30, 30, 47, 0.95)
+  );
 }
 
-.auth-form-box h2 {
-  color: var(--primary-color);
+.signup-form-box {
+  width: 100%;
+  max-width: 480px;
+  background-color: var(--form-bg);
+  padding: 3rem 2.5rem;
+  border-radius: 24px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.signup-form-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--primary-hover)
+  );
+}
+
+.logo-wrapper {
+  display: flex;
+  justify-content: center;
   margin-bottom: 1.5rem;
-  font-size: 1.8rem;
+}
+
+.logo-wrapper img {
+  max-height: 80px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  transition: var(--transition);
+}
+
+.logo-wrapper img:hover {
+  transform: scale(1.05);
+}
+
+.signup-form-box h2 {
+  color: var(--primary-color);
+  margin-bottom: 1.8rem;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: -0.5px;
 }
 
 /* Form Elements */
 .auth-form {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
-/* Input Fields */
 .input-wrapper {
   position: relative;
   width: 100%;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.2rem;
 }
 
 .input-icon {
   position: absolute;
-  left: 15px;
+  left: 1rem;
   top: 50%;
   transform: translateY(-50%);
   color: var(--primary-color);
   font-size: 1.1rem;
-  transition: all 0.3s ease;
+  transition: var(--transition);
+  z-index: 2;
 }
 
-.input-wrapper input {
+.sign-input {
   width: 100%;
-  padding: 0.8rem 1rem 0.8rem 2.8rem;
-  border-radius: 8px;
-  border: none;
+  padding: 1rem 1rem 1rem 3rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   background-color: var(--input-bg);
   color: var(--white);
   font-size: 0.95rem;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: inherit;
+  transition: var(--transition);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.input-wrapper input:focus {
+.sign-input:focus {
   outline: none;
   border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(251, 186, 63, 0.2);
 }
 
-.input-wrapper input:focus + .input-icon {
+.sign-input:focus + .input-icon {
   color: var(--white);
   transform: translateY(-50%) scale(1.1);
 }
 
-/* Checkboxes and Radios */
-.option-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  justify-content: center;
-  margin: 1rem 0;
+.sign-input::placeholder {
+  color: var(--light-gray);
+  opacity: 0.7;
 }
 
-.option-label {
+/* User Type Selection */
+.user-type-selection {
+  display: flex;
+  gap: 1rem;
+  margin: 1.2rem 0;
+}
+
+.user-type-selection label {
+  flex: 1;
   display: flex;
   align-items: center;
-  font-size: 0.95rem;
+  justify-content: center;
+  padding: 0.8rem;
+  border-radius: 10px;
+  background-color: var(--input-bg);
+  color: var(--light-gray);
   cursor: pointer;
+  transition: var(--transition);
+  font-size: 0.9rem;
+  text-align: center;
 }
 
-.option-label input {
-  margin-right: 0.5rem;
-  accent-color: var(--primary-color);
+.user-type-selection input[type="radio"] {
+  display: none;
+}
+
+.user-type-selection input[type="radio"]:checked + label {
+  background-color: var(--primary-color);
+  color: var(--dark-bg);
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(251, 186, 63, 0.3);
+}
+
+/* Checkboxes */
+.terms {
+  display: flex;
+  align-items: center;
+  margin: 0.8rem 0;
+}
+
+.terms input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--light-gray);
+  border-radius: 5px;
+  margin-right: 0.8rem;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+}
+
+.terms input[type="checkbox"]:checked {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.terms input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  color: var(--dark-bg);
+  font-size: 0.9rem;
+  font-weight: bold;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.terms label {
+  font-size: 0.85rem;
+  color: var(--light-gray);
+  cursor: pointer;
+  user-select: none;
 }
 
 /* Buttons */
-.auth-btn {
+.signup-btn {
   width: 100%;
-  padding: 0.9rem;
-  background-color: var(--primary-color);
+  padding: 1rem;
+  background: linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--primary-hover)
+  );
   color: var(--dark-bg);
-  font-weight: bold;
+  font-weight: 600;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition);
   margin-top: 1rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(251, 186, 63, 0.3);
+  position: relative;
+  overflow: hidden;
 }
 
-.auth-btn:hover {
-  background-color: var(--hover-color);
+.signup-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 20px rgba(251, 186, 63, 0.4);
 }
 
-/* Link Switch */
-.auth-link-switch {
+.signup-btn:active {
+  transform: translateY(0);
+}
+
+.signup-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.2)
+  );
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+}
+
+.signup-btn:hover::after {
+  transform: translateX(0);
+}
+
+/* Login Link */
+.login-text {
+  text-align: center;
   margin-top: 1.5rem;
-  font-size: 0.9rem;
   color: var(--light-gray);
+  font-size: 0.9rem;
 }
 
-.auth-link {
+.login-link {
   color: var(--primary-color);
   font-weight: 600;
   text-decoration: none;
-  margin-left: 0.3rem;
-  transition: color 0.3s ease;
+  transition: var(--transition);
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
 }
 
-.auth-link:hover {
-  color: var(--hover-color);
+.login-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.login-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Alerts */
+.alert {
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.error {
+  background-color: rgba(255, 107, 107, 0.15);
+  color: var(--error-red);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.success {
+  background-color: rgba(76, 175, 80, 0.15);
+  color: var(--success-green);
+  border: 1px solid rgba(76, 175, 80, 0.3);
 }
 
 /* Animations */
@@ -230,80 +445,105 @@ body {
   }
 }
 
-/* Desktop Layout */
-@media (min-width: 769px) {
-  .auth-container {
-    flex-direction: row;
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .left-panel {
+    padding: 1.5rem;
   }
 
-  .image-panel {
-    height: 100vh;
-    flex: 1;
-    justify-content: flex-end;
-    align-items: flex-end;
-  }
-
-  .form-panel {
-    flex: 1;
-  }
-
-  .image-panel img {
-    max-width: 650px;
-    margin-right: -60px;
-  }
-
-  .image-caption {
-    left: 10%;
-    bottom: 10%;
-    width: auto;
+  .knee-caption {
+    font-size: 1.5rem;
     max-width: 320px;
-    text-align: left;
-    font-size: 1.3rem;
   }
 
-  .auth-form-box {
-    padding: 3rem 2rem;
+  .right-panel {
+    padding: 2rem;
+  }
+
+  .signup-form-box {
+    padding: 2.5rem 2rem;
   }
 }
 
-/* Tablet Adjustments */
 @media (max-width: 768px) {
-  .image-panel {
-    height: 220px;
+  .signup-ui-container {
+    flex-direction: column;
+    min-height: auto;
   }
 
-  .auth-form-box {
+  .left-panel {
+    height: 250px;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .robot-img {
+    width: 100%;
+    max-width: 400px;
+    margin-left: 0;
+  }
+
+  .knee-caption {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin: 1rem auto;
+    text-align: center;
+    max-width: 90%;
+    font-size: 1.3rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .right-panel {
+    padding: 1.5rem;
+    min-height: calc(100vh - 250px);
+  }
+
+  .signup-form-box {
     padding: 2rem 1.5rem;
+    max-height: none;
+  }
+
+  .user-type-selection {
+    flex-direction: column;
+    gap: 0.8rem;
   }
 }
 
-/* Mobile Adjustments */
 @media (max-width: 480px) {
-  .image-panel {
+  .left-panel {
     height: 200px;
   }
 
-  .image-caption {
-    font-size: 1rem;
-    padding: 0.6rem;
+  .knee-caption {
+    font-size: 1.1rem;
+    padding: 0.8rem;
   }
 
-  .auth-form-box {
-    padding: 1.5rem 1rem;
+  .signup-form-box {
+    padding: 1.8rem 1.2rem;
   }
 
-  .auth-form-box h2 {
-    font-size: 1.5rem;
-  }
-
-  .input-wrapper input {
-    padding: 0.7rem 1rem 0.7rem 2.5rem;
-    font-size: 0.9rem;
+  .sign-input {
+    padding: 0.9rem 0.9rem 0.9rem 2.8rem;
   }
 
   .input-icon {
-    font-size: 1rem;
-    left: 12px;
+    left: 0.8rem;
+  }
+
+  .signup-form-box h2 {
+    font-size: 1.7rem;
   }
 }
 
@@ -313,114 +553,4 @@ body {
     animation: none !important;
     transition: none !important;
   }
-}
-
-/* Investor Dashboard General */
-.dashboard-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: var(--dark-bg);
-  color: var(--white);
-}
-
-.dashboard-header {
-  background-color: var(--panel-dark);
-  padding: 1rem;
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 600;
-  color: var(--primary-color);
-}
-
-.dashboard-main {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: space-between;
-  padding: 2rem;
-}
-
-/* Individual Dashboard Section */
-.dashboard-section {
-  background-color: var(--panel-dark);
-  border-radius: 10px;
-  padding: 1.5rem;
-  width: calc(50% - 1rem); /* Adjust for a two-column layout */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-}
-
-.dashboard-section h3 {
-  font-size: 1.5rem;
-  color: var(--primary-color);
-  margin-bottom: 1rem;
-}
-
-/* Project Charts Section */
-.project-charts {
-  height: 300px;
-  background-color: var(--panel-dark);
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.project-charts canvas {
-  width: 100%;
-  height: 100%;
-}
-
-/* Forex Overview Section */
-.forex-overview {
-  height: 300px;
-  background-color: var(--panel-dark);
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.forex-overview h4 {
-  font-size: 1.3rem;
-  color: var(--primary-color);
-  margin-bottom: 1rem;
-}
-
-.forex-overview p {
-  color: var(--light-gray);
-}
-
-/* Stock Analysis Section */
-.stock-analysis {
-  background-color: var(--panel-dark);
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.stock-analysis h4 {
-  font-size: 1.3rem;
-  color: var(--primary-color);
-  margin-bottom: 1rem;
-}
-
-.stock-analysis p {
-  color: var(--light-gray);
-}
-
-/* Market Trends Section */
-.market-trends {
-  background-color: var(--panel-dark);
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.market-trends h4 {
-  font-size: 1.3rem;
-  color: var(--primary-color);
-  margin-bottom: 1rem;
-}
-
-.market-trends p {
-  color: var(--light-gray);
 }
