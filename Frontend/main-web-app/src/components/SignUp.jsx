@@ -26,24 +26,20 @@ const SignUp = () => {
     email: "",
     password: "",
     adminCode: "",
-    userType: "User", // 👈 Default is now User
+    role: "User", // Default role is User
   });
-  const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
+  // Handle input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleAdminToggle = () => {
-    setIsAdmin(!isAdmin);
-    setFormData((prev) => ({ ...prev, adminCode: "" }));
-  };
-
-  const handleUserTypeChange = (e) => {
-    setFormData({ ...formData, userType: e.target.value });
+  // Handle role selection change
+  const handleRoleChange = (e) => {
+    setFormData({ ...formData, role: e.target.value, adminCode: "" }); // Reset adminCode when switching role
   };
 
   const handleSubmit = async (e) => {
@@ -53,16 +49,14 @@ const SignUp = () => {
     setSuccess("");
 
     try {
-      const role = isAdmin ? "admin" : formData.userType.toLowerCase();
-
       const res = await axios.post(
         "https://backend-8-gn1i.onrender.com/api/auth/signup",
         {
           username: formData.username,
           email: formData.email,
           password: formData.password,
-          role,
-          adminCode: isAdmin ? formData.adminCode : undefined,
+          role: formData.role.toLowerCase(),
+          adminCode: formData.role === "Admin" ? formData.adminCode : undefined, // Send adminCode only for Admin role
         }
       );
 
@@ -72,17 +66,6 @@ const SignUp = () => {
       const errorMessage =
         err.response?.data?.message || "Registration failed. Please try again.";
       setError(errorMessage);
-
-      if (errorMessage.includes("limit reached")) {
-        setFormData({
-          username: "",
-          email: "",
-          password: "",
-          adminCode: "",
-          userType: "User",
-        });
-        setIsAdmin(false);
-      }
     } finally {
       setLoading(false);
     }
@@ -103,7 +86,11 @@ const SignUp = () => {
         <div className="signup-form-box">
           <div className="glow-border"></div>
 
-          <h2>{isAdmin ? "Admin Registration" : "Create an account"}</h2>
+          <h2>
+            {formData.role === "Admin"
+              ? "Admin Registration"
+              : "Create an account"}
+          </h2>
 
           <div className="logo-wrapper">
             <img src={logo} alt="logo" className="logo" />
@@ -120,6 +107,7 @@ const SignUp = () => {
           {success && <div className="alert success">{success}</div>}
 
           <form onSubmit={handleSubmit}>
+            {/* Username Input */}
             <div className="input-wrapper">
               <FaUser className="input-icon" />
               <input
@@ -135,6 +123,7 @@ const SignUp = () => {
               />
             </div>
 
+            {/* Email Input */}
             <div className="input-wrapper">
               <FaEnvelope className="input-icon" />
               <input
@@ -148,6 +137,7 @@ const SignUp = () => {
               />
             </div>
 
+            {/* Password Input */}
             <div className="input-wrapper">
               <FaLock className="input-icon" />
               <input
@@ -162,7 +152,8 @@ const SignUp = () => {
               />
             </div>
 
-            {isAdmin && (
+            {/* Admin Code (Only for Admin Role) */}
+            {formData.role === "Admin" && (
               <div className="input-wrapper">
                 <FaShieldAlt className="input-icon" />
                 <input
@@ -177,46 +168,54 @@ const SignUp = () => {
               </div>
             )}
 
-            {/* User Type Selection */}
-            {!isAdmin && (
-              <div className="user-type-selection">
-                <label>
-                  <input
-                    type="radio"
-                    name="userType"
-                    value="User"
-                    checked={formData.userType === "User"}
-                    onChange={handleUserTypeChange}
-                  />
-                  User
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="userType"
-                    value="Developer"
-                    checked={formData.userType === "Developer"}
-                    onChange={handleUserTypeChange}
-                  />
-                  Developer
-                </label>
-              </div>
-            )}
+            {/* Role Selection (User, Developer, Admin, Investor) */}
+            <div className="user-type-selection">
+              <label>
+                <input
+                  type="radio"
+                  name="role"
+                  value="User"
+                  checked={formData.role === "User"}
+                  onChange={handleRoleChange}
+                />
+                User
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="role"
+                  value="Developer"
+                  checked={formData.role === "Developer"}
+                  onChange={handleRoleChange}
+                />
+                Developer
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="role"
+                  value="Admin"
+                  checked={formData.role === "Admin"}
+                  onChange={handleRoleChange}
+                />
+                Admin
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="role"
+                  value="Investor"
+                  checked={formData.role === "Investor"}
+                  onChange={handleRoleChange}
+                />
+                Investor
+              </label>
+            </div>
 
+            {/* Terms and Conditions */}
             <div className="terms">
               <input type="checkbox" required className="tick" id="terms" />
               <label htmlFor="terms">I agree to the Terms & Conditions</label>
-            </div>
-
-            <div className="terms">
-              <input
-                type="checkbox"
-                id="adminMode"
-                className="tick"
-                checked={isAdmin}
-                onChange={handleAdminToggle}
-              />
-              <label htmlFor="adminMode">Register as Admin</label>
             </div>
 
             <button
@@ -225,7 +224,7 @@ const SignUp = () => {
               disabled={loading}
               aria-busy={loading}
             >
-              {isAdmin ? "Register Admin" : "Create Account"}
+              {formData.role === "Admin" ? "Register Admin" : "Create Account"}
             </button>
           </form>
         </div>
