@@ -7,31 +7,27 @@ import "../styles/LoadingScreen.css";
 import robotImage from "/images/ROBOT.png";
 import logo from "/images/logo.jpg";
 
-const LoadingScreen = () => {
-  return (
-    <div className="loading-screen">
-      <div className="loader">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <p>Signing you up, please wait...</p>
+const LoadingScreen = () => (
+  <div className="loading-screen">
+    <div className="loader">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
-  );
-};
+    <p>Signing you up, please wait...</p>
+  </div>
+);
 
 const SignUp = () => {
   const navigate = useNavigate();
-
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: "",
     adminCode: "",
-    userType: "Investor", // Default user type is Investor
+    userType: "User", // 👈 Default is now User
   });
-
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -42,8 +38,8 @@ const SignUp = () => {
   };
 
   const handleAdminToggle = () => {
-    setIsAdmin((prev) => !prev);
-    setFormData({ ...formData, adminCode: "" });
+    setIsAdmin(!isAdmin);
+    setFormData((prev) => ({ ...prev, adminCode: "" }));
   };
 
   const handleUserTypeChange = (e) => {
@@ -57,22 +53,36 @@ const SignUp = () => {
     setSuccess("");
 
     try {
+      const role = isAdmin ? "admin" : formData.userType.toLowerCase();
+
       const res = await axios.post(
         "https://backend-8-gn1i.onrender.com/api/auth/signup",
         {
-          ...formData,
-          isAdmin,
+          username: formData.username,
+          email: formData.email,
+          password: formData.password,
+          role,
+          adminCode: isAdmin ? formData.adminCode : undefined,
         }
       );
 
-      setSuccess(res.data.message || "Account created successfully!");
-      setTimeout(() => {
-        navigate("/login");
-      }, 2000);
+      setSuccess(res.data.message);
+      setTimeout(() => navigate("/login"), 2000);
     } catch (err) {
-      setError(
-        err.response?.data?.message || "Something went wrong. Please try again."
-      );
+      const errorMessage =
+        err.response?.data?.message || "Registration failed. Please try again.";
+      setError(errorMessage);
+
+      if (errorMessage.includes("limit reached")) {
+        setFormData({
+          username: "",
+          email: "",
+          password: "",
+          adminCode: "",
+          userType: "User",
+        });
+        setIsAdmin(false);
+      }
     } finally {
       setLoading(false);
     }
@@ -168,28 +178,30 @@ const SignUp = () => {
             )}
 
             {/* User Type Selection */}
-            <div className="user-type-selection">
-              <label>
-                <input
-                  type="radio"
-                  name="userType"
-                  value="Investor"
-                  checked={formData.userType === "Investor"}
-                  onChange={handleUserTypeChange}
-                />
-                Investor
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="userType"
-                  value="Developer"
-                  checked={formData.userType === "Developer"}
-                  onChange={handleUserTypeChange}
-                />
-                Developer
-              </label>
-            </div>
+            {!isAdmin && (
+              <div className="user-type-selection">
+                <label>
+                  <input
+                    type="radio"
+                    name="userType"
+                    value="User"
+                    checked={formData.userType === "User"}
+                    onChange={handleUserTypeChange}
+                  />
+                  User
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="userType"
+                    value="Developer"
+                    checked={formData.userType === "Developer"}
+                    onChange={handleUserTypeChange}
+                  />
+                  Developer
+                </label>
+              </div>
+            )}
 
             <div className="terms">
               <input type="checkbox" required className="tick" id="terms" />
