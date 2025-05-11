@@ -314,3 +314,113 @@ body {
     transition: none !important;
   }
 }
+
+/* Investor Dashboard General */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--dark-bg);
+  color: var(--white);
+}
+
+.dashboard-header {
+  background-color: var(--panel-dark);
+  padding: 1rem;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.dashboard-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+/* Individual Dashboard Section */
+.dashboard-section {
+  background-color: var(--panel-dark);
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: calc(50% - 1rem); /* Adjust for a two-column layout */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.dashboard-section h3 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+/* Project Charts Section */
+.project-charts {
+  height: 300px;
+  background-color: var(--panel-dark);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.project-charts canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* Forex Overview Section */
+.forex-overview {
+  height: 300px;
+  background-color: var(--panel-dark);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.forex-overview h4 {
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.forex-overview p {
+  color: var(--light-gray);
+}
+
+/* Stock Analysis Section */
+.stock-analysis {
+  background-color: var(--panel-dark);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.stock-analysis h4 {
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.stock-analysis p {
+  color: var(--light-gray);
+}
+
+/* Market Trends Section */
+.market-trends {
+  background-color: var(--panel-dark);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.market-trends h4 {
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.market-trends p {
+  color: var(--light-gray);
+}
