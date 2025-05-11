@@ -1,0 +1,426 @@
+:root {
+  --primary-color: #fbba3f;
+  --hover-color: #ffd873;
+  --dark-bg: #1e1e2f;
+  --panel-dark: #2d2d3d;
+  --form-bg: #29293d;
+  --input-bg: #3a3a4d;
+  --white: #ffffff;
+  --light-gray: #ccc;
+  --lighter-gray: #cedbe9;
+  --error-red: #ff6b6b;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --max-width: 100%;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: var(--dark-bg);
+  color: var(--white);
+}
+
+/* Unified Auth Container */
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Image Panel - Top Section */
+.image-panel {
+  width: 100%;
+  height: 250px;
+  background-color: var(--form-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.image-panel img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.image-caption {
+  position: absolute;
+  bottom: 20px;
+  width: 90%;
+  text-align: center;
+  color: white;
+  background: rgba(29, 29, 45, 0.8);
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  margin: 0 auto;
+  backdrop-filter: blur(2px);
+  box-shadow: 0 2px 6px var(--shadow-color);
+  animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+/* Form Panel - Bottom Section */
+.form-panel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: var(--dark-bg);
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Form Container */
+.auth-form-box {
+  width: 100%;
+  max-width: 500px;
+  background-color: var(--form-bg);
+  padding: 2.5rem 1.5rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.auth-form-box h2 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+/* Form Elements */
+.auth-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Input Fields */
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.input-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 2.8rem;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--input-bg);
+  color: var(--white);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.input-wrapper input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(251, 186, 63, 0.2);
+}
+
+.input-wrapper input:focus + .input-icon {
+  color: var(--white);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Checkboxes and Radios */
+.option-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.option-label input {
+  margin-right: 0.5rem;
+  accent-color: var(--primary-color);
+}
+
+/* Buttons */
+.auth-btn {
+  width: 100%;
+  padding: 0.9rem;
+  background-color: var(--primary-color);
+  color: var(--dark-bg);
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.auth-btn:hover {
+  background-color: var(--hover-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Link Switch */
+.auth-link-switch {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--light-gray);
+}
+
+.auth-link {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 0.3rem;
+  transition: color 0.3s ease;
+}
+
+.auth-link:hover {
+  color: var(--hover-color);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Desktop Layout */
+@media (min-width: 769px) {
+  .auth-container {
+    flex-direction: row;
+  }
+
+  .image-panel {
+    height: 100vh;
+    flex: 1;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
+  .form-panel {
+    flex: 1;
+  }
+
+  .image-panel img {
+    max-width: 650px;
+    margin-right: -60px;
+  }
+
+  .image-caption {
+    left: 10%;
+    bottom: 10%;
+    width: auto;
+    max-width: 320px;
+    text-align: left;
+    font-size: 1.3rem;
+  }
+
+  .auth-form-box {
+    padding: 3rem 2rem;
+  }
+}
+
+/* Tablet Adjustments */
+@media (max-width: 768px) {
+  .image-panel {
+    height: 220px;
+  }
+
+  .auth-form-box {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 480px) {
+  .image-panel {
+    height: 200px;
+  }
+
+  .image-caption {
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
+
+  .auth-form-box {
+    padding: 1.5rem 1rem;
+  }
+
+  .auth-form-box h2 {
+    font-size: 1.5rem;
+  }
+
+  .input-wrapper input {
+    padding: 0.7rem 1rem 0.7rem 2.5rem;
+    font-size: 0.9rem;
+  }
+
+  .input-icon {
+    font-size: 1rem;
+    left: 12px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Investor Dashboard General */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--dark-bg);
+  color: var(--white);
+}
+
+.dashboard-header {
+  background-color: var(--panel-dark);
+  padding: 1rem;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.dashboard-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+/* Individual Dashboard Section */
+.dashboard-section {
+  background-color: var(--panel-dark);
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: calc(50% - 1rem); /* Adjust for a two-column layout */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.dashboard-section h3 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+/* Project Charts Section */
+.project-charts {
+  height: 300px;
+  background-color: var(--panel-dark);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.project-charts canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* Forex Overview Section */
+.forex-overview {
+  height: 300px;
+  background-color: var(--panel-dark);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.forex-overview h4 {
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.forex-overview p {
+  color: var(--light-gray);
+}
+
+/* Stock Analysis Section */
+.stock-analysis {
+  background-color: var(--panel-dark);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.stock-analysis h4 {
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.stock-analysis p {
+  color: var(--light-gray);
+}
+
+/* Market Trends Section */
+.market-trends {
+  background-color: var(--panel-dark);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.market-trends h4 {
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.market-trends p {
+  color: var(--light-gray);
+}
