@@ -168,48 +168,22 @@ const SignUp = () => {
               </div>
             )}
 
-            {/* Role Selection (User, Developer, Admin, Investor) */}
-            <div className="user-type-selection">
-              <label>
-                <input
-                  type="radio"
-                  name="role"
-                  value="User"
-                  checked={formData.role === "User"}
-                  onChange={handleRoleChange}
-                />
-                User
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="role"
-                  value="Developer"
-                  checked={formData.role === "Developer"}
-                  onChange={handleRoleChange}
-                />
-                Developer
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="role"
-                  value="Admin"
-                  checked={formData.role === "Admin"}
-                  onChange={handleRoleChange}
-                />
-                Admin
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="role"
-                  value="Investor"
-                  checked={formData.role === "Investor"}
-                  onChange={handleRoleChange}
-                />
-                Investor
-              </label>
+            {/* Role Selection Dropdown */}
+            <div className="role-selection">
+              <label htmlFor="role">Select Role</label>
+              <select
+                id="role"
+                name="role"
+                value={formData.role}
+                onChange={handleRoleChange}
+                className="role-dropdown"
+                required
+              >
+                <option value="User">User</option>
+                <option value="Developer">Developer</option>
+                <option value="Admin">Admin</option>
+                <option value="Investor">Investor</option>
+              </select>
             </div>
 
             {/* Terms and Conditions */}
