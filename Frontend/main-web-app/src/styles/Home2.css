@@ -14,7 +14,7 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: var(--dark-bg);
   color: var(--white);
-  overflow: hidden;
+  overflow: auto;
 }
 
 .landing-container {
