@@ -50,7 +50,9 @@ const SalesDashboard = () => {
   useEffect(() => {
     const fetchSalesData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/sales");
+        const response = await axios.get(
+          "https://backend-8-gn1i.onrender.com/api/sales"
+        );
         setSalesData(response.data);
         prepareChartData(response.data);
       } catch (error) {
@@ -75,8 +77,13 @@ const SalesDashboard = () => {
     };
 
     try {
-      await axios.post("http://localhost:5000/api/sales", newSaleObj);
-      const response = await axios.get("http://localhost:5000/api/sales");
+      await axios.post(
+        "https://backend-8-gn1i.onrender.com/api/sales",
+        newSaleObj
+      );
+      const response = await axios.get(
+        "https://backend-8-gn1i.onrender.com/api/sales"
+      );
       setSalesData(response.data);
       prepareChartData(response.data);
       setNewSale(newSaleObj);
@@ -105,7 +112,7 @@ const SalesDashboard = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/sales/${id}`,
+        `https://backend-8-gn1i.onrender.com/api/sales/${id}`,
         updatedSale
       );
       const updatedSalesData = salesData.map((sale) =>
@@ -120,7 +127,7 @@ const SalesDashboard = () => {
 
   const handleDeleteSale = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/sales/${id}`);
+      await axios.delete(`https://backend-8-gn1i.onrender.com/api/sales/${id}`);
       const updatedSalesData = salesData.filter((sale) => sale._id !== id);
       setSalesData(updatedSalesData);
       prepareChartData(updatedSalesData);
