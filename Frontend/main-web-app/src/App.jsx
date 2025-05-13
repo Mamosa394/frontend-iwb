@@ -25,6 +25,7 @@ import ProjectCharts from "./pages/ProjectCharts";
 import ForexCharts from "./pages/ForexOverview";
 import StockAnalysis from "./pages/StockAnalysis";
 import MarketTrends from "./pages/MarketTrends";
+import OrderPage from "./pages/OrderPage";
 
 const App = () => {
   return (
@@ -64,6 +65,7 @@ const App = () => {
               <Route path="/forex" element={<ForexCharts />} />
               <Route path="/stock-analysis" element={<StockAnalysis />} />
               <Route path="/market-trends" element={<MarketTrends />} />
+              <Route path="/order/:id" element={<OrderPage />} />
             </Routes>
           </main>
         </div>

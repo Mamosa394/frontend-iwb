@@ -21,7 +21,8 @@ const Inventory = () => {
   const [email, setEmail] = useState("");
   const [adminVerified, setAdminVerified] = useState(false);
 
-  const BASE_URL = import.meta.env.VITE_API_URL || "https://backend-8-gn1i.onrender.com";
+  const BASE_URL =
+    import.meta.env.VITE_API_URL || "https://backend-8-gn1i.onrender.com";
 
   useEffect(() => {
     const fetchInventory = async () => {
@@ -48,7 +49,9 @@ const Inventory = () => {
 
   const handleBuy = (item) => {
     setBuyItem(item);
+    localStorage.setItem("selectedProduct", JSON.stringify(item));
     setShowBuyModal(true);
+    navigate(`/order/${item._id}`);
   };
 
   const handleCloseModal = () => {
@@ -57,7 +60,9 @@ const Inventory = () => {
   };
 
   const matchesSearch = (item) => {
-    const text = `${item.name} ${item.specs.cpu} ${item.specs.gpu} ${item.tags.join(" ")}`.toLowerCase();
+    const text = `${item.name} ${item.specs.cpu} ${
+      item.specs.gpu
+    } ${item.tags.join(" ")}`.toLowerCase();
     return text.includes(search.toLowerCase());
   };
 
@@ -98,10 +103,7 @@ const Inventory = () => {
     <div className="inventory-container">
       <Header />
       <header className="inventory-header">
-        <button
-          className="admin-toggle-btn"
-          onClick={handleAdminModeToggle}
-        >
+        <button className="admin-toggle-btn" onClick={handleAdminModeToggle}>
           Switch to {isAdmin ? "User" : "Admin"} Mode
         </button>
       </header>
@@ -170,15 +172,27 @@ const Inventory = () => {
             <div className="inventory-info">
               <h3>{item.name}</h3>
               <ul>
-                <li><strong>CPU:</strong> {item.specs.cpu}</li>
-                <li><strong>RAM:</strong> {item.specs.ram}</li>
-                <li><strong>Storage:</strong> {item.specs.storage}</li>
-                <li><strong>GPU:</strong> {item.specs.gpu}</li>
-                <li><strong>Price:</strong> M {item.price}</li>
+                <li>
+                  <strong>CPU:</strong> {item.specs.cpu}
+                </li>
+                <li>
+                  <strong>RAM:</strong> {item.specs.ram}
+                </li>
+                <li>
+                  <strong>Storage:</strong> {item.specs.storage}
+                </li>
+                <li>
+                  <strong>GPU:</strong> {item.specs.gpu}
+                </li>
+                <li>
+                  <strong>Price:</strong> M {item.price}
+                </li>
               </ul>
               <div className="tag-container">
                 {item.tags.map((tag, index) => (
-                  <span key={`${tag}-${index}`} className="tag">{tag}</span>
+                  <span key={`${tag}-${index}`} className="tag">
+                    {tag}
+                  </span>
                 ))}
               </div>
               <div className="card-actions">
@@ -188,10 +202,12 @@ const Inventory = () => {
                 {isAdmin && (
                   <>
                     <button onClick={() => handleEdit(item._id)}>Edit</button>
-                    <button onClick={() => handleDelete(item._id)}>Delete</button>
+                    <button onClick={() => handleDelete(item._id)}>
+                      Delete
+                    </button>
                   </>
                 )}
-                <div className="buy-button" onClick={() => handleBuy(item)}>
+                <div className="buy-button1" onClick={() => handleBuy(item)}>
                   Buy
                 </div>
               </div>
@@ -210,12 +226,24 @@ const Inventory = () => {
               alt={buyItem.name}
               className="modal-item-img"
             />
-            <p><strong>Item:</strong> {buyItem.name}</p>
-            <p><strong>CPU:</strong> {buyItem.specs.cpu}</p>
-            <p><strong>RAM:</strong> {buyItem.specs.ram}</p>
-            <p><strong>Storage:</strong> {buyItem.specs.storage}</p>
-            <p><strong>GPU:</strong> {buyItem.specs.gpu}</p>
-            <p><strong>Price:</strong> M {buyItem.price}</p>
+            <p>
+              <strong>Item:</strong> {buyItem.name}
+            </p>
+            <p>
+              <strong>CPU:</strong> {buyItem.specs.cpu}
+            </p>
+            <p>
+              <strong>RAM:</strong> {buyItem.specs.ram}
+            </p>
+            <p>
+              <strong>Storage:</strong> {buyItem.specs.storage}
+            </p>
+            <p>
+              <strong>GPU:</strong> {buyItem.specs.gpu}
+            </p>
+            <p>
+              <strong>Price:</strong> M {buyItem.price}
+            </p>
             <div className="modal-actions">
               <button onClick={handleCloseModal}>Cancel</button>
               <button

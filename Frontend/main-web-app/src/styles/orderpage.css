@@ -1,0 +1,38 @@
+.order-page {
+  padding: 2rem;
+  background: #f8f8f8;
+  min-height: 100vh;
+}
+
+.order-card {
+  display: flex;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px var(--shadow-color);
+}
+
+.order-card img {
+  width: 250px;
+  height: auto;
+  margin-right: 2rem;
+  border-radius: 8px;
+}
+
+.order-details {
+  max-width: 600px;
+}
+
+.order-details select,
+.order-details button {
+  margin-top: 1rem;
+  padding: 0.6rem;
+  width: 100%;
+}
+
+.confirm-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
